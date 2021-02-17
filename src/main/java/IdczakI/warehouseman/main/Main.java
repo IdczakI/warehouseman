@@ -5,8 +5,8 @@ import IdczakI.warehouseman.io.Reader;
 import IdczakI.warehouseman.io.Writer;
 import IdczakI.warehouseman.model.*;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,20 +15,20 @@ public class Main {
         IOFile reader = new Reader();
         IOFile writer = new Writer();
 
-//        reader.readFiles();
-//        System.out.println(IOFile.WAREHOUSEMAN_MAP);
-//        System.out.println(IOFile.TRUCK_DRIVER_MAP);
-//        IOFile.WAREHOUSEMAN_MAP.put("123C", new Warehouseman("140A", "Tadeusz", "Nowak"));
-//        IOFile.TRUCK_DRIVER_MAP.put("125850", new TruckDriver("125850", "Damian", "Rewers"
-//                , "Rewers Company", "PN 66589"));
-//        writer.writeFiles();
-        LocalDateTime local = LocalDateTime.now();
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd  HH-mm-ss");
+        reader.readFiles();
+        System.out.println(IOFile.GOODS_RECEIVED_SET);
+        System.out.println(IOFile.GOODS_RELEASE_SET);
+        Inventory inventory = IOFile.INVENTORY_MAP.get("ten");
+        LocalDate localDate = LocalDate.now();
+        LocalTime localTime = LocalTime.now();
+        Warehouseman warehouseman = IOFile.WAREHOUSEMAN_MAP.get("127C");
+        TruckDriver truckDriver = IOFile.TRUCK_DRIVER_MAP.get("123123");
+        IOFile.GOODS_RELEASE_SET.add(new GoodsReleaseNote(inventory, localDate, localTime, warehouseman, truckDriver));
+        writer.writeFiles();
 
 
 
-        System.out.println(local.format(dateTimeFormatter));
-        System.out.println(local.getDayOfWeek());
+
     }
 
 
