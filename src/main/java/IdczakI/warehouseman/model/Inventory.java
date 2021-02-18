@@ -10,7 +10,7 @@ public class Inventory {
     public Inventory(Product product, int quantityOfPallets) {
         this.product = product;
         this.quantityOfPallets = quantityOfPallets;
-        this.quantityOfProducts = quantityOfPallets / product.getQuantityOnOnePallet();
+        this.quantityOfProducts = quantityOfPallets / product.getQuantityPerOnePallet();
     }
 
     public Product getProduct() {
@@ -23,7 +23,7 @@ public class Inventory {
 
     @Override
     public String toString() {
-        return product.getId() + "," + quantityOfPallets;
+        return product.getId() + Product.REGEX + quantityOfPallets;
     }
 
     @Override

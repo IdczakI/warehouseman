@@ -1,28 +1,43 @@
 package IdczakI.warehouseman.controller;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import IdczakI.warehouseman.io.IOFile;
+import IdczakI.warehouseman.io.Reader;
+import IdczakI.warehouseman.io.Writer;
+import IdczakI.warehouseman.model.Product;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class MainController {
 
-    @FXML
-    private TableView<?> productsTableView;
+    static private final ObservableList<Product> LIST = FXCollections.observableArrayList();
 
-    @FXML
-    private TextField searchTextField;
+    public static ObservableList<Product> getLIST() {
+        return LIST;
+    }
 
-    @FXML
-    private Button newProductButton;
+    public IOFile reader = new Reader();
+    public IOFile writer = new Writer();
 
-    @FXML
-    private Button editProductButton;
+    public void showPane(String resource, String title) {
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource(resource));
+            Scene scene = new Scene(pane);
+            Stage stage = new Stage();
+            stage.setTitle(title);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException | NullPointerException e) {
+            e.printStackTrace();
+        }
+    }
 
-    @FXML
-    private Button deleteProductButton;
-
-    public void initialize(){
+    public void initialize() {
 
     }
 }

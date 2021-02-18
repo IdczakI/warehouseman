@@ -20,6 +20,7 @@ public class Writer extends IOFile {
         ) {
             createFile();
             for (Product product : PRODUCT_MAP.values()) {
+                if (product.toString().contains(",,"))
                 productWriter.write(product.toString());
                 productWriter.newLine();
             }

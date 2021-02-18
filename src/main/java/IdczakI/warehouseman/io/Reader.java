@@ -10,6 +10,8 @@ import java.time.LocalTime;
 
 public class Reader extends IOFile {
 
+    private final static String REGEX = ",,";
+
     @Override
     public void readFiles() {
         try (BufferedReader productReader = new BufferedReader(new FileReader(productsFile));
@@ -32,30 +34,30 @@ public class Reader extends IOFile {
     }
 
     private void fillProductMap(String s) {
-        String[] c = s.split(",");
-        PRODUCT_MAP.put(c[0], new Product(c[0], Integer.parseInt(c[1])));
+        String[] c = s.split(REGEX);
+        PRODUCT_MAP.put(c[0], new Product(c[0],c[1], Integer.parseInt(c[2])));
 
     }
 
     private void fillInventoryMap(String s) {
-        String[] c = s.split(",");
+        String[] c = s.split(REGEX);
         if (PRODUCT_MAP.containsKey(c[0])) {
             INVENTORY_MAP.put(c[0], new Inventory(PRODUCT_MAP.get(c[0]),Integer.parseInt(c[1])));
         } else System.out.println("file error");
     }
 
     private void fillWarehousemanMap(String s) {
-        String[] c = s.split(",");
+        String[] c = s.split(REGEX);
         WAREHOUSEMAN_MAP.put(c[0], new Warehouseman(c[0], c[1], c[2]));
     }
 
     private void fillTruckDriverMap(String s) {
-        String[] c = s.split(",");
+        String[] c = s.split(REGEX);
         TRUCK_DRIVER_MAP.put(c[0], new TruckDriver(c[0], c[1], c[2], c[3], c[4]));
     }
 
     private void fillGoodsReceivedSet(String s) {
-        String[] c = s.split(",");
+        String[] c = s.split(REGEX);
         if (WAREHOUSEMAN_MAP.containsKey(c[4]) && PRODUCT_MAP.containsKey(c[0])) {
             Product product = PRODUCT_MAP.get(c[0]);
             Warehouseman warehouseman = WAREHOUSEMAN_MAP.get(c[4]);
@@ -67,7 +69,7 @@ public class Reader extends IOFile {
     }
 
     private void fillGoodsReleaseSet(String s) {
-        String[] c = s.split(",");
+        String[] c = s.split(",,");
         if (PRODUCT_MAP.containsKey(c[0]) && WAREHOUSEMAN_MAP.containsKey(c[4]) && TRUCK_DRIVER_MAP.containsKey(c[5])){
             Product product = PRODUCT_MAP.get(c[0]);
             Warehouseman warehouseman = WAREHOUSEMAN_MAP.get(c[4]);

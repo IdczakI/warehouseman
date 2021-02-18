@@ -26,6 +26,6 @@ public class Warehouseman {
 
     @Override
     public String toString() {
-        return id + "," + firstName + "," + lastName;
+        return id + Product.REGEX + firstName + Product.REGEX + lastName;
     }
 }

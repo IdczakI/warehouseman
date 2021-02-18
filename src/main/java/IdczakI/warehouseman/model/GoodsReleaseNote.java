@@ -51,8 +51,9 @@ public class GoodsReleaseNote {
 
     @Override
     public String toString() {
-        return product.getId() + "," + quantityOfPallets +  "," + date.format(IOFile.DATE_FORMATTER) + ","
-                + time.format(IOFile.TIME_FORMATTER) + "," + warehouseman.getId() + "," + truckDriver.getId();
+        return product.getId() + Product.REGEX + quantityOfPallets +  Product.REGEX + date.format(IOFile.DATE_FORMATTER)
+                + Product.REGEX + time.format(IOFile.TIME_FORMATTER) + Product.REGEX + warehouseman.getId()
+                + Product.REGEX + truckDriver.getId();
     }
 
     @Override

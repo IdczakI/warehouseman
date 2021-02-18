@@ -38,6 +38,7 @@ public class TruckDriver {
 
     @Override
     public String toString() {
-        return id + "," + firstName + "," + lastName + "," + company + "," + vehicleRegistrationNumber;
+        return id + Product.REGEX + firstName + Product.REGEX + lastName + Product.REGEX
+                + company + Product.REGEX + vehicleRegistrationNumber;
     }
 }
