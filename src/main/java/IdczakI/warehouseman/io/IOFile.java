@@ -2,6 +2,7 @@ package IdczakI.warehouseman.io;
 
 import IdczakI.warehouseman.model.*;
 
+import javax.swing.text.DateFormatter;
 import java.io.File;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
@@ -10,14 +11,14 @@ import java.util.*;
 abstract public class IOFile {
 
     final static String PRODUCTS_FILE_NAME = "src/main/resources/csv/product.csv";
-    final static String STOCK_FILE_NAME = "src/main/resources/csv/inventory.csv";
+    final static String INVENTORY_FILE_NAME = "src/main/resources/csv/inventory.csv";
     final static String WAREHOUSEMAN_FILE_NAME = "src/main/resources/csv/warehouseman.csv";
     final static String TRUCK_DRIVER_FILE_NAME = "src/main/resources/csv/driver.csv";
     final static String GOODS_RECEIVED_FILE_NAME = "src/main/resources/csv/received.csv";
     final static String GOODS_RELEASE_FILE_NAME = "src/main/resources/csv/release.csv";
 
     final static File productsFile = new File(PRODUCTS_FILE_NAME);
-    final static File inventoryFile = new File(STOCK_FILE_NAME);
+    final static File inventoryFile = new File(INVENTORY_FILE_NAME);
     final static File warehousemanFile = new File(WAREHOUSEMAN_FILE_NAME);
     final static File truckDriverFile = new File(TRUCK_DRIVER_FILE_NAME);
     final static File goodsReceivedFile = new File(GOODS_RECEIVED_FILE_NAME);
@@ -31,8 +32,8 @@ abstract public class IOFile {
     public static final Set<GoodsReceivedNote> GOODS_RECEIVED_SET = new HashSet<>();
     public static final Set<GoodsReleaseNote> GOODS_RELEASE_SET = new HashSet<>();
 
-    public static final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-    public static final DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+    public static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+    public static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm:ss");
 
     abstract public void readFiles();
 

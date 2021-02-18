@@ -18,13 +18,17 @@ public class Main {
         reader.readFiles();
         System.out.println(IOFile.GOODS_RECEIVED_SET);
         System.out.println(IOFile.GOODS_RELEASE_SET);
-        Inventory inventory = IOFile.INVENTORY_MAP.get("ten");
         LocalDate localDate = LocalDate.now();
+        localDate.format(IOFile.DATE_FORMATTER);
         LocalTime localTime = LocalTime.now();
-        Warehouseman warehouseman = IOFile.WAREHOUSEMAN_MAP.get("127C");
-        TruckDriver truckDriver = IOFile.TRUCK_DRIVER_MAP.get("123123");
-        IOFile.GOODS_RELEASE_SET.add(new GoodsReleaseNote(inventory, localDate, localTime, warehouseman, truckDriver));
+        localTime.format(IOFile.TIME_FORMATTER);
+        IOFile.GOODS_RELEASE_SET.add(new GoodsReleaseNote(
+                new Product("SUPER",12),
+                12, localDate, localTime, IOFile.WAREHOUSEMAN_MAP.get("140A"),
+                IOFile.TRUCK_DRIVER_MAP.get("111111")
+        ));
         writer.writeFiles();
+
 
 
 

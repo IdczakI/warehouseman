@@ -3,16 +3,18 @@ package IdczakI.warehouseman.model;
 import java.util.Objects;
 
 public class Inventory {
-    private Pallet pallet;
+    private Product product;
     private int quantityOfPallets;
+    private int quantityOfProducts;
 
-    public Inventory(Pallet pallet, int quantityOfPallets) {
-        this.pallet = pallet;
+    public Inventory(Product product, int quantityOfPallets) {
+        this.product = product;
         this.quantityOfPallets = quantityOfPallets;
+        this.quantityOfProducts = quantityOfPallets / product.getQuantityOnOnePallet();
     }
 
-    public Pallet getPallet() {
-        return pallet;
+    public Product getProduct() {
+        return product;
     }
 
     public int getQuantityOfPallets() {
@@ -21,7 +23,7 @@ public class Inventory {
 
     @Override
     public String toString() {
-        return pallet.getProduct().getId() + "," + quantityOfPallets;
+        return product.getId() + "," + quantityOfPallets;
     }
 
     @Override
@@ -29,12 +31,12 @@ public class Inventory {
         if (this == o) return true;
         if (!(o instanceof Inventory)) return false;
         Inventory inventory = (Inventory) o;
-        return Objects.equals(pallet, inventory.pallet);
+        return Objects.equals(product, inventory.product);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(pallet);
+        return Objects.hash(product);
     }
 }
 

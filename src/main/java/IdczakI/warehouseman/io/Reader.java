@@ -7,7 +7,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 
 public class Reader extends IOFile {
 
@@ -34,14 +33,14 @@ public class Reader extends IOFile {
 
     private void fillProductMap(String s) {
         String[] c = s.split(",");
-        PRODUCT_MAP.put(c[0], new Product(c[0], Double.parseDouble(c[1]), Integer.parseInt(c[2])));
+        PRODUCT_MAP.put(c[0], new Product(c[0], Integer.parseInt(c[1])));
 
     }
 
     private void fillInventoryMap(String s) {
         String[] c = s.split(",");
         if (PRODUCT_MAP.containsKey(c[0])) {
-            INVENTORY_MAP.put(c[0], new Inventory(new Pallet(PRODUCT_MAP.get(c[0])), Integer.parseInt(c[1])));
+            INVENTORY_MAP.put(c[0], new Inventory(PRODUCT_MAP.get(c[0]),Integer.parseInt(c[1])));
         } else System.out.println("file error");
     }
 
@@ -57,24 +56,26 @@ public class Reader extends IOFile {
 
     private void fillGoodsReceivedSet(String s) {
         String[] c = s.split(",");
-        if (WAREHOUSEMAN_MAP.containsKey(c[3]) && INVENTORY_MAP.containsKey(c[0])) {
-            Inventory inventory = INVENTORY_MAP.get(c[0]);
-            Warehouseman warehouseman = WAREHOUSEMAN_MAP.get(c[3]);
-            LocalDate localDate = LocalDate.parse(c[1], dateFormatter);
-            LocalTime localTime = LocalTime.parse(c[2], timeFormatter);
-            GOODS_RECEIVED_SET.add(new GoodsReceivedNote(inventory, localDate, localTime, warehouseman));
+        if (WAREHOUSEMAN_MAP.containsKey(c[4]) && PRODUCT_MAP.containsKey(c[0])) {
+            Product product = PRODUCT_MAP.get(c[0]);
+            Warehouseman warehouseman = WAREHOUSEMAN_MAP.get(c[4]);
+            LocalDate localDate = LocalDate.parse(c[2], DATE_FORMATTER);
+            LocalTime localTime = LocalTime.parse(c[3], TIME_FORMATTER);
+            GOODS_RECEIVED_SET.add(new GoodsReceivedNote(product, Integer.parseInt(c[1]),
+                    localDate, localTime, warehouseman));
         }else System.out.println("file error");
     }
 
     private void fillGoodsReleaseSet(String s) {
         String[] c = s.split(",");
-        if (INVENTORY_MAP.containsKey(c[0]) && WAREHOUSEMAN_MAP.containsKey(c[3]) && TRUCK_DRIVER_MAP.containsKey(c[4])){
-            Inventory inventory = INVENTORY_MAP.get(c[0]);
-            Warehouseman warehouseman = WAREHOUSEMAN_MAP.get(c[3]);
-            LocalDate localDate = LocalDate.parse(c[1], dateFormatter);
-            LocalTime localTime = LocalTime.parse(c[2], timeFormatter);
-            TruckDriver truckDriver = TRUCK_DRIVER_MAP.get(c[4]);
-            GOODS_RELEASE_SET.add(new GoodsReleaseNote(inventory, localDate, localTime, warehouseman, truckDriver));
+        if (PRODUCT_MAP.containsKey(c[0]) && WAREHOUSEMAN_MAP.containsKey(c[4]) && TRUCK_DRIVER_MAP.containsKey(c[5])){
+            Product product = PRODUCT_MAP.get(c[0]);
+            Warehouseman warehouseman = WAREHOUSEMAN_MAP.get(c[4]);
+            LocalDate localDate = LocalDate.parse(c[2], DATE_FORMATTER);
+            LocalTime localTime = LocalTime.parse(c[3], TIME_FORMATTER);
+            TruckDriver truckDriver = TRUCK_DRIVER_MAP.get(c[5]);
+            GOODS_RELEASE_SET.add(new GoodsReleaseNote(product, Integer.parseInt(c[1]), localDate,
+                    localTime, warehouseman, truckDriver));
         }else System.out.println("file error");
     }
 

@@ -5,21 +5,15 @@ import java.util.Objects;
 public class Product {
 
     private String id;
-    private double weight; //kg
     private int quantityOnOnePallet;
 
-    public Product(String id, double weight, int quantityOnOnePallet) {
+    public Product(String id, int quantityOnOnePallet) {
         this.id = id;
-        this.weight = weight;
         this.quantityOnOnePallet = quantityOnOnePallet;
     }
 
     public String getId() {
         return id;
-    }
-
-    public double getWeight() {
-        return weight;
     }
 
     public int getQuantityOnOnePallet() {
@@ -28,7 +22,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return id + "," + weight + "," + quantityOnOnePallet;
+        return id + "," + quantityOnOnePallet;
     }
 
     @Override

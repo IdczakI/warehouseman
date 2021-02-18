@@ -8,23 +8,25 @@ import java.util.Objects;
 
 public class GoodsReleaseNote {
 
-    private Inventory inventory;
+    private Product product;
+    private int quantityOfPallets;
     private LocalDate date;
     private LocalTime time;
     private Warehouseman warehouseman;
     private TruckDriver truckDriver;
 
-    public GoodsReleaseNote(Inventory inventory, LocalDate date, LocalTime time,
+    public GoodsReleaseNote(Product product, int quantityOfPallets, LocalDate date, LocalTime time,
                             Warehouseman warehouseman, TruckDriver truckDriver) {
-        this.inventory = inventory;
+        this.product = product;
+        this.quantityOfPallets = quantityOfPallets;
         this.date = date;
         this.time = time;
         this.warehouseman = warehouseman;
         this.truckDriver = truckDriver;
     }
 
-    public Inventory getInventory() {
-        return inventory;
+    public Product getProduct() {
+        return product;
     }
 
     public LocalDate getDate() {
@@ -43,10 +45,14 @@ public class GoodsReleaseNote {
         return truckDriver;
     }
 
+    public int getQuantityOfPallets() {
+        return quantityOfPallets;
+    }
+
     @Override
     public String toString() {
-        return inventory.getPallet().getProduct().getId() + "," + date.format(IOFile.dateFormatter) + ","
-                + time.format(IOFile.timeFormatter) + "," + warehouseman.getId() + "," + truckDriver.getId();
+        return product.getId() + "," + quantityOfPallets +  "," + date.format(IOFile.DATE_FORMATTER) + ","
+                + time.format(IOFile.TIME_FORMATTER) + "," + warehouseman.getId() + "," + truckDriver.getId();
     }
 
     @Override
@@ -54,11 +60,11 @@ public class GoodsReleaseNote {
         if (this == o) return true;
         if (!(o instanceof GoodsReleaseNote)) return false;
         GoodsReleaseNote that = (GoodsReleaseNote) o;
-        return Objects.equals(inventory, that.inventory);
+        return Objects.equals(product, that.product);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(inventory);
+        return Objects.hash(product);
     }
 }
