@@ -17,7 +17,7 @@ public class Reader extends IOFile {
         try (BufferedReader productReader = new BufferedReader(new FileReader(productsFile));
              BufferedReader inventoryReader = new BufferedReader(new FileReader(inventoryFile));
              BufferedReader warehousemanReader = new BufferedReader(new FileReader(warehousemanFile));
-             BufferedReader truckDriverReader = new BufferedReader(new FileReader(truckDriverFile));
+             BufferedReader truckDriverReader = new BufferedReader(new FileReader(shipperFile));
              BufferedReader goodsReceivedReader = new BufferedReader(new FileReader(goodsReceivedFile));
              BufferedReader goodsReleaseReader = new BufferedReader(new FileReader(goodsReleaseFile))
         ) {
@@ -53,7 +53,7 @@ public class Reader extends IOFile {
 
     private void fillTruckDriverMap(String s) {
         String[] c = s.split(REGEX);
-        TRUCK_DRIVER_MAP.put(c[0], new TruckDriver(c[0], c[1], c[2], c[3], c[4]));
+        SHIPPER_MAP.put(c[0], new Shipper(c[0], c[1], c[2], c[3], c[4]));
     }
 
     private void fillGoodsReceivedSet(String s) {
@@ -69,15 +69,15 @@ public class Reader extends IOFile {
     }
 
     private void fillGoodsReleaseSet(String s) {
-        String[] c = s.split(",,");
-        if (PRODUCT_MAP.containsKey(c[0]) && WAREHOUSEMAN_MAP.containsKey(c[4]) && TRUCK_DRIVER_MAP.containsKey(c[5])){
+        String[] c = s.split(REGEX);
+        if (PRODUCT_MAP.containsKey(c[0]) && WAREHOUSEMAN_MAP.containsKey(c[4]) && SHIPPER_MAP.containsKey(c[5])){
             Product product = PRODUCT_MAP.get(c[0]);
             Warehouseman warehouseman = WAREHOUSEMAN_MAP.get(c[4]);
             LocalDate localDate = LocalDate.parse(c[2], DATE_FORMATTER);
             LocalTime localTime = LocalTime.parse(c[3], TIME_FORMATTER);
-            TruckDriver truckDriver = TRUCK_DRIVER_MAP.get(c[5]);
+            Shipper shipper = SHIPPER_MAP.get(c[5]);
             GOODS_RELEASE_SET.add(new GoodsReleaseNote(product, Integer.parseInt(c[1]), localDate,
-                    localTime, warehouseman, truckDriver));
+                    localTime, warehouseman, shipper));
         }else System.out.println("file error");
     }
 

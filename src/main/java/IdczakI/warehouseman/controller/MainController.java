@@ -4,6 +4,7 @@ import IdczakI.warehouseman.io.IOFile;
 import IdczakI.warehouseman.io.Reader;
 import IdczakI.warehouseman.io.Writer;
 import IdczakI.warehouseman.model.Product;
+import IdczakI.warehouseman.model.Shipper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -15,10 +16,15 @@ import java.io.IOException;
 
 public class MainController {
 
-    static private final ObservableList<Product> LIST = FXCollections.observableArrayList();
+    static private final ObservableList<Product> PRODUCTS_LIST = FXCollections.observableArrayList();
+    static private final ObservableList<Shipper> SHIPPERS_LIST = FXCollections.observableArrayList();
 
-    public static ObservableList<Product> getLIST() {
-        return LIST;
+    public static ObservableList<Product> getProductsList() {
+        return PRODUCTS_LIST;
+    }
+
+    public static ObservableList<Shipper> getShippersList() {
+        return SHIPPERS_LIST;
     }
 
     public IOFile reader = new Reader();
@@ -38,6 +44,5 @@ public class MainController {
     }
 
     public void initialize() {
-
-    }
+            }
 }

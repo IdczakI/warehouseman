@@ -46,10 +46,29 @@ public class ProductPaneController extends MainController {
         searchTextField.setOnKeyTyped(this::searchProduct);
         newProductButton.setOnAction(this::addProduct);
         editProductButton.setOnAction(this::editProduct);
+        deleteProductButton.setOnAction(this::deleteProduct);
+    }
+
+    private void fillTableView() {
+        reader.readFiles();
+        getProductsList().addAll(IOFile.PRODUCT_MAP.values());
+        idTableColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        descriptionTableColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+        qtyTableColumn.setCellValueFactory(new PropertyValueFactory<>("quantityPerOnePallet"));
+        productsTableView.setItems(getProductsList());
+    }
+
+    private void searchProduct(KeyEvent event) {
+        productsTableView.setItems(Product.getSearchedList(getProductsList(), searchTextField.getText()));
+    }
+
+    private void addProduct(ActionEvent event) {
+        productsTableView.setItems(getProductsList());
+        showPane("/fxml/product/addProductPane.fxml", "Add Product");
     }
 
     private void editProduct(ActionEvent event) {
-        productsTableView.setItems(getLIST());
+        productsTableView.setItems(getProductsList());
         if (!productsTableView.getSelectionModel().isEmpty()) {
             tableIndexForEdit = productsTableView.getSelectionModel().getSelectedIndex();
             productForEdit = productsTableView.getItems().get(tableIndexForEdit);
@@ -57,22 +76,11 @@ public class ProductPaneController extends MainController {
         }
     }
 
-    private void addProduct(ActionEvent event) {
-        productsTableView.setItems(getLIST());
-        showPane("/fxml/product/newProductPane.fxml", "Add Product");
-    }
-
-    private void searchProduct(KeyEvent event) {
-        productsTableView.setItems(Product.getSearchedList(getLIST(), searchTextField.getText()));
-    }
-
-    private void fillTableView() {
-        reader.readFiles();
-        getLIST().addAll(IOFile.PRODUCT_MAP.values());
-        idTableColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-        descriptionTableColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
-        qtyTableColumn.setCellValueFactory(new PropertyValueFactory<>("quantityPerOnePallet"));
-        productsTableView.setItems(getLIST());
+    private void deleteProduct(ActionEvent event) {
+        if (!productsTableView.getSelectionModel().isEmpty()) {
+            tableIndexForEdit = productsTableView.getSelectionModel().getSelectedIndex();
+            showPane("/fxml/product/deleteProductPane.fxml", "Delete Product");
+        }
     }
 
 }

@@ -14,7 +14,7 @@ public class Writer extends IOFile {
         try (BufferedWriter productWriter = new BufferedWriter(new FileWriter(productsFile));
              BufferedWriter stockWriter = new BufferedWriter(new FileWriter(inventoryFile));
              BufferedWriter warehousemanWriter = new BufferedWriter(new FileWriter(warehousemanFile));
-             BufferedWriter truckDriverWriter = new BufferedWriter(new FileWriter(truckDriverFile));
+             BufferedWriter truckDriverWriter = new BufferedWriter(new FileWriter(shipperFile));
              BufferedWriter goodsReceivedWriter = new BufferedWriter(new FileWriter(goodsReceivedFile));
              BufferedWriter goodsReleaseWriter = new BufferedWriter(new FileWriter(goodsReleaseFile))
         ) {
@@ -32,8 +32,8 @@ public class Writer extends IOFile {
                 warehousemanWriter.write(warehouseman.toString());
                 warehousemanWriter.newLine();
             }
-            for (TruckDriver truckDriver : TRUCK_DRIVER_MAP.values()) {
-                truckDriverWriter.write(truckDriver.toString());
+            for (Shipper shipper : SHIPPER_MAP.values()) {
+                truckDriverWriter.write(shipper.toString());
                 truckDriverWriter.newLine();
             }
             for (GoodsReceivedNote goodsReceivedNote : GOODS_RECEIVED_SET) {

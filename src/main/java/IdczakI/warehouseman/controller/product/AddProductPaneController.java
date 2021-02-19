@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class NewProductPaneController extends ProductPaneController {
+public class AddProductPaneController extends ProductPaneController {
 
     @FXML
     private TextField idTextField;
@@ -28,8 +28,8 @@ public class NewProductPaneController extends ProductPaneController {
     private void productButton(ActionEvent event) {
         Product product = new Product(idTextField.getText(), descriptionTextField.getText(),
                 Product.getIntFromTextField(qtyTextField));
-        if (!getLIST().contains(product))
-            getLIST().add(product);
+        if (!getProductsList().contains(product))
+            getProductsList().add(product);
         Stage stage = (Stage) addProductButton.getScene().getWindow();
         stage.close();
     }

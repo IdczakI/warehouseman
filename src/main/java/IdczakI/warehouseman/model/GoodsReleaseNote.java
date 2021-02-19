@@ -13,16 +13,16 @@ public class GoodsReleaseNote {
     private LocalDate date;
     private LocalTime time;
     private Warehouseman warehouseman;
-    private TruckDriver truckDriver;
+    private Shipper shipper;
 
     public GoodsReleaseNote(Product product, int quantityOfPallets, LocalDate date, LocalTime time,
-                            Warehouseman warehouseman, TruckDriver truckDriver) {
+                            Warehouseman warehouseman, Shipper shipper) {
         this.product = product;
         this.quantityOfPallets = quantityOfPallets;
         this.date = date;
         this.time = time;
         this.warehouseman = warehouseman;
-        this.truckDriver = truckDriver;
+        this.shipper = shipper;
     }
 
     public Product getProduct() {
@@ -41,8 +41,8 @@ public class GoodsReleaseNote {
         return warehouseman;
     }
 
-    public TruckDriver getTruckDriver() {
-        return truckDriver;
+    public Shipper getTruckDriver() {
+        return shipper;
     }
 
     public int getQuantityOfPallets() {
@@ -53,7 +53,7 @@ public class GoodsReleaseNote {
     public String toString() {
         return product.getId() + Product.REGEX + quantityOfPallets +  Product.REGEX + date.format(IOFile.DATE_FORMATTER)
                 + Product.REGEX + time.format(IOFile.TIME_FORMATTER) + Product.REGEX + warehouseman.getId()
-                + Product.REGEX + truckDriver.getId();
+                + Product.REGEX + shipper.getId();
     }
 
     @Override

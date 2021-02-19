@@ -1,6 +1,11 @@
 package IdczakI.warehouseman.model;
 
-public class TruckDriver {
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+import java.util.Objects;
+
+public class Shipper {
 
     private String id;
     private String firstName;
@@ -8,7 +13,7 @@ public class TruckDriver {
     private String company;
     private String vehicleRegistrationNumber;
 
-    public TruckDriver(String id, String firstName, String lastName, String company, String vehicleRegistrationNumber) {
+    public Shipper(String id, String firstName, String lastName, String company, String vehicleRegistrationNumber) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -40,5 +45,26 @@ public class TruckDriver {
     public String toString() {
         return id + Product.REGEX + firstName + Product.REGEX + lastName + Product.REGEX
                 + company + Product.REGEX + vehicleRegistrationNumber;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Shipper)) return false;
+        Shipper shipper = (Shipper) o;
+        return Objects.equals(id, shipper.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    public static ObservableList<Shipper> getSearchedList(ObservableList<Shipper> list, String s) {
+        ObservableList<Shipper> tmpList = FXCollections.observableArrayList();
+        list.stream()
+                .filter(shipper -> shipper.getId().toLowerCase().contains(s.toLowerCase()))
+                .forEach(tmpList::add);
+        return tmpList;
     }
 }
