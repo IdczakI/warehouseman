@@ -28,8 +28,8 @@ public class AddProductPaneController extends ProductPaneController {
     private void productButton(ActionEvent event) {
         Product product = new Product(idTextField.getText(), descriptionTextField.getText(),
                 Product.getIntFromTextField(qtyTextField));
-        if (!getProductsList().contains(product))
-            getProductsList().add(product);
+        if (!PRODUCTS_LIST.contains(product))
+            PRODUCTS_LIST.add(product);
         Stage stage = (Stage) addProductButton.getScene().getWindow();
         stage.close();
     }

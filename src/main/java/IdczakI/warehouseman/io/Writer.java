@@ -9,8 +9,7 @@ import java.io.IOException;
 public class Writer extends IOFile {
 
 
-    @Override
-    public void writeFiles() {
+     public void writeFiles() {
         try (BufferedWriter productWriter = new BufferedWriter(new FileWriter(productsFile));
              BufferedWriter stockWriter = new BufferedWriter(new FileWriter(inventoryFile));
              BufferedWriter warehousemanWriter = new BufferedWriter(new FileWriter(warehousemanFile));
@@ -29,7 +28,7 @@ public class Writer extends IOFile {
                 stockWriter.newLine();
             }
             for (Warehouseman warehouseman : WAREHOUSEMAN_MAP.values()) {
-                warehousemanWriter.write(warehouseman.toString());
+                warehousemanWriter.write(warehouseman.toCsv());
                 warehousemanWriter.newLine();
             }
             for (Shipper shipper : SHIPPER_MAP.values()) {

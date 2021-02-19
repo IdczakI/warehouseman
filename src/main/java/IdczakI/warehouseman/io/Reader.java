@@ -12,8 +12,7 @@ public class Reader extends IOFile {
 
     private final static String REGEX = ",,";
 
-    @Override
-    public void readFiles() {
+     public void readFiles() {
         try (BufferedReader productReader = new BufferedReader(new FileReader(productsFile));
              BufferedReader inventoryReader = new BufferedReader(new FileReader(inventoryFile));
              BufferedReader warehousemanReader = new BufferedReader(new FileReader(warehousemanFile));
@@ -48,7 +47,7 @@ public class Reader extends IOFile {
 
     private void fillWarehousemanMap(String s) {
         String[] c = s.split(REGEX);
-        WAREHOUSEMAN_MAP.put(c[0], new Warehouseman(c[0], c[1], c[2]));
+        WAREHOUSEMAN_MAP.put(c[0], new Warehouseman(c[0], c[1], c[2], c[3]));
     }
 
     private void fillTruckDriverMap(String s) {

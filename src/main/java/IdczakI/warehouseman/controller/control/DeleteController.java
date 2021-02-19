@@ -21,9 +21,9 @@ public class DeleteController extends MainController {
 
     private void deleteProduct(ActionEvent event) {
         if (deleteValue.equals("S"))
-            getShippersList().remove(getTableIndexForEdit());
+            SHIPPERS_LIST.remove(tableIndexForEdit);
         else if (deleteValue.equals("P"))
-            getProductsList().remove(getTableIndexForEdit());
+            PRODUCTS_LIST.remove(tableIndexForEdit);
         closeWindow();
     }
 

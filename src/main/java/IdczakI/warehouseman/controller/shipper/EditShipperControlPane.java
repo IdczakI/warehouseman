@@ -38,7 +38,7 @@ public class EditShipperControlPane extends ShipperPaneController {
         Shipper shipper = new Shipper(shipperForEdit.getId(), firstNameTextField.getText(), lastNameTextField.getText(),
                 companyTextField.getText(), vehicleNumberTextField.getText());
 //        if (!getShippersList().contains(shipper))
-            getShippersList().set(getTableIndexForEdit(), shipper);
+            SHIPPERS_LIST.set(tableIndexForEdit, shipper);
         Stage stage = (Stage) editShipperButton.getScene().getWindow();
         stage.close();
     }

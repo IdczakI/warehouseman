@@ -5,6 +5,7 @@ import IdczakI.warehouseman.io.Reader;
 import IdczakI.warehouseman.io.Writer;
 import IdczakI.warehouseman.model.Product;
 import IdczakI.warehouseman.model.Shipper;
+import IdczakI.warehouseman.model.Warehouseman;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -16,28 +17,12 @@ import java.io.IOException;
 
 public class MainController {
 
-    static private final ObservableList<Product> PRODUCTS_LIST = FXCollections.observableArrayList();
-    static private final ObservableList<Shipper> SHIPPERS_LIST = FXCollections.observableArrayList();
-    private static int tableIndexForEdit;
+    static public final ObservableList<Product> PRODUCTS_LIST = FXCollections.observableArrayList();
+    static public final ObservableList<Shipper> SHIPPERS_LIST = FXCollections.observableArrayList();
+    static public final ObservableList<Warehouseman> WAREHOUSEMAN_LIST = FXCollections.observableArrayList();
+    public static int tableIndexForEdit;
     public static String deleteValue = "";
 
-    public static ObservableList<Product> getProductsList() {
-        return PRODUCTS_LIST;
-    }
-
-    public static ObservableList<Shipper> getShippersList() {
-        return SHIPPERS_LIST;
-    }
-
-    public static int getTableIndexForEdit() {
-        return tableIndexForEdit;
-    }
-
-    public static void setTableIndexForEdit(int tableIndexForEdit) {
-        MainController.tableIndexForEdit = tableIndexForEdit;
-    }
-
-    public IOFile reader = new Reader();
     public IOFile writer = new Writer();
 
     public void showPane(String resource, String title) {

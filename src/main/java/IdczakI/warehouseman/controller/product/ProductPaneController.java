@@ -49,37 +49,37 @@ public class ProductPaneController extends MainController {
     }
 
     private void fillTableView() {
-        reader.readFiles();
-        getProductsList().addAll(IOFile.PRODUCT_MAP.values());
+        PRODUCTS_LIST.addAll(IOFile.PRODUCT_MAP.values());
         idTableColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         descriptionTableColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
         qtyTableColumn.setCellValueFactory(new PropertyValueFactory<>("quantityPerOnePallet"));
-        productsTableView.setItems(getProductsList());
+        productsTableView.setItems(PRODUCTS_LIST);
+        System.out.println(WAREHOUSEMAN_LIST);
     }
 
     private void searchProduct(KeyEvent event) {
-        productsTableView.setItems(Product.getSearchedList(getProductsList(), searchTextField.getText()));
+        productsTableView.setItems(Product.getSearchedList(PRODUCTS_LIST, searchTextField.getText()));
     }
 
     private void addProduct(ActionEvent event) {
-        productsTableView.setItems(getProductsList());
+        productsTableView.setItems(PRODUCTS_LIST);
         showPane("/fxml/product/addProductPane.fxml", "Add Product");
     }
 
     private void editProduct(ActionEvent event) {
-        productsTableView.setItems(getProductsList());
+        productsTableView.setItems(PRODUCTS_LIST);
         if (!productsTableView.getSelectionModel().isEmpty()) {
-            setTableIndexForEdit(productsTableView.getSelectionModel().getSelectedIndex());
-            productForEdit = productsTableView.getItems().get(getTableIndexForEdit());
+            tableIndexForEdit = productsTableView.getSelectionModel().getSelectedIndex();
+            productForEdit = productsTableView.getItems().get(tableIndexForEdit);
             showPane("/fxml/product/editProductPane.fxml", "Edit Product");
         }
     }
 
     private void deleteProduct(ActionEvent event) {
         if (!productsTableView.getSelectionModel().isEmpty()) {
-            setTableIndexForEdit(productsTableView.getSelectionModel().getSelectedIndex());
-            deleteValue = "P";
-            showPane("/fxml/delete/deletePane.fxml", "Delete Product");
+            tableIndexForEdit = productsTableView.getSelectionModel().getSelectedIndex();
+            deleteValue ="P";
+            showPane("/fxml/control/deletePane.fxml", "Delete Product");
         }
     }
 

@@ -8,7 +8,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0"
             prefWidth="400.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="IdczakI.warehouseman.controller.shipper.EditShipperControlPane">
-    <TextField fx:id="idTextField" layoutX="20.0" layoutY="42.0" maxHeight="1.7976931348623157E308"
+    <TextField fx:id="idTextField" editable="false" layoutX="20.0" layoutY="42.0" maxHeight="1.7976931348623157E308"
                maxWidth="1.7976931348623157E308" minWidth="150.0" prefHeight="25.0" prefWidth="170.0"
                AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="40.0"/>
     <TextField fx:id="vehicleNumberTextField" layoutX="260.0" layoutY="42.0" prefHeight="25.0" prefWidth="170.0"

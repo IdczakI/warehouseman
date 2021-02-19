@@ -55,38 +55,38 @@ public class ShipperPaneController extends MainController {
     }
 
     private void fillTableView() {
-        getShippersList().addAll(IOFile.SHIPPER_MAP.values());
+        SHIPPERS_LIST.addAll(IOFile.SHIPPER_MAP.values());
         idTableColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         firstNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         lastNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         companyTableColumn.setCellValueFactory(new PropertyValueFactory<>("company"));
         vehicleNumberTableColumn.setCellValueFactory(new PropertyValueFactory<>("vehicleRegistrationNumber"));
-        shippersTableView.setItems(getShippersList());
+        shippersTableView.setItems(SHIPPERS_LIST);
     }
 
     private void searchShipper(KeyEvent event) {
-        shippersTableView.setItems(Shipper.getSearchedList(getShippersList(), searchTextField.getText()));
+        shippersTableView.setItems(Shipper.getSearchedList(SHIPPERS_LIST, searchTextField.getText()));
     }
 
     private void addShipper(ActionEvent event) {
-        shippersTableView.setItems(getShippersList());
+        shippersTableView.setItems(SHIPPERS_LIST);
         showPane("/fxml/shipper/addShipperPane.fxml", "Add Shipper");
     }
 
     private void editShipper(ActionEvent event) {
-        shippersTableView.setItems(getShippersList());
+        shippersTableView.setItems(SHIPPERS_LIST);
         if (!shippersTableView.getSelectionModel().isEmpty()) {
-            setTableIndexForEdit(shippersTableView.getSelectionModel().getSelectedIndex());
-            shipperForEdit = shippersTableView.getItems().get(getTableIndexForEdit());
+            tableIndexForEdit = shippersTableView.getSelectionModel().getSelectedIndex();
+            shipperForEdit = shippersTableView.getItems().get(tableIndexForEdit);
             showPane("/fxml/shipper/editShipperPane.fxml", "Edit Shipper");
         }
     }
 
     private void deleteShipper(ActionEvent event) {
         if (!shippersTableView.getSelectionModel().isEmpty()) {
-            setTableIndexForEdit(shippersTableView.getSelectionModel().getSelectedIndex());
-            deleteValue = "S";
-            showPane("/fxml/delete/deletePane.fxml", "Delete Shipper");
+            tableIndexForEdit = shippersTableView.getSelectionModel().getSelectedIndex();
+            deleteValue= "S";
+            showPane("/fxml/control/deletePane.fxml", "Delete Shipper");
         }
     }
 }
