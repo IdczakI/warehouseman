@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0"
+            prefWidth="400.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="IdczakI.warehouseman.controller.shipper.AddShipperPaneController">
+    <TextField fx:id="idTextField" layoutX="20.0" layoutY="42.0" maxHeight="1.7976931348623157E308"
+               maxWidth="1.7976931348623157E308" minWidth="150.0" prefHeight="25.0" prefWidth="170.0"
+               AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="40.0"/>
+    <TextField fx:id="vehicleNumberTextField" layoutX="260.0" layoutY="42.0" prefHeight="25.0" prefWidth="170.0"
+               AnchorPane.leftAnchor="210.0" AnchorPane.topAnchor="40.0"/>
+    <TextField fx:id="companyTextField" layoutX="25.0" layoutY="108.0" prefHeight="25.0" prefWidth="360.0"
+               AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="105.0"/>
+    <Button fx:id="addShipperButton" layoutX="150.0" layoutY="211.0" maxWidth="100.0" mnemonicParsing="false"
+            prefWidth="100.0" text="Add Shipper" AnchorPane.leftAnchor="150.0"/>
+    <Label layoutX="21.0" layoutY="25.0" text="ID" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="25.0"/>
+    <Label layoutX="205.0" layoutY="25.0" text="Vehicle Number" AnchorPane.leftAnchor="210.0"
+           AnchorPane.topAnchor="25.0"/>
+    <Label layoutX="20.0" layoutY="88.0" text="Company" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="88.0"/>
+    <TextField fx:id="firstNameTextField" layoutX="20.0" layoutY="152.0" prefHeight="25.0" prefWidth="170.0"
+               AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="170.0"/>
+    <TextField fx:id="lastNameTextField" layoutX="201.0" layoutY="152.0" prefHeight="25.0" prefWidth="170.0"
+               AnchorPane.leftAnchor="210.0" AnchorPane.topAnchor="170.0"/>
+    <Label layoutX="17.0" layoutY="153.0" text="First Name" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="153.0"/>
+    <Label layoutX="210.0" layoutY="153.0" text="Last Name" AnchorPane.leftAnchor="210.0" AnchorPane.topAnchor="153.0"/>
+</AnchorPane>

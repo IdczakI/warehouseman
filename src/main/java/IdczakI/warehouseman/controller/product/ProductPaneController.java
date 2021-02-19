@@ -15,7 +15,6 @@ import javafx.scene.input.KeyEvent;
 public class ProductPaneController extends MainController {
 
     static Product productForEdit = new Product("", "", 0);
-    static int tableIndexForEdit;
 
     @FXML
     private TableView<Product> productsTableView;
@@ -70,16 +69,17 @@ public class ProductPaneController extends MainController {
     private void editProduct(ActionEvent event) {
         productsTableView.setItems(getProductsList());
         if (!productsTableView.getSelectionModel().isEmpty()) {
-            tableIndexForEdit = productsTableView.getSelectionModel().getSelectedIndex();
-            productForEdit = productsTableView.getItems().get(tableIndexForEdit);
+            setTableIndexForEdit(productsTableView.getSelectionModel().getSelectedIndex());
+            productForEdit = productsTableView.getItems().get(getTableIndexForEdit());
             showPane("/fxml/product/editProductPane.fxml", "Edit Product");
         }
     }
 
     private void deleteProduct(ActionEvent event) {
         if (!productsTableView.getSelectionModel().isEmpty()) {
-            tableIndexForEdit = productsTableView.getSelectionModel().getSelectedIndex();
-            showPane("/fxml/product/deleteProductPane.fxml", "Delete Product");
+            setTableIndexForEdit(productsTableView.getSelectionModel().getSelectedIndex());
+            deleteValue = "P";
+            showPane("/fxml/delete/deletePane.fxml", "Delete Product");
         }
     }
 

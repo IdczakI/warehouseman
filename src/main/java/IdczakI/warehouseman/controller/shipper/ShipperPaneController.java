@@ -2,7 +2,6 @@ package IdczakI.warehouseman.controller.shipper;
 
 import IdczakI.warehouseman.controller.MainController;
 import IdczakI.warehouseman.io.IOFile;
-import IdczakI.warehouseman.model.Product;
 import IdczakI.warehouseman.model.Shipper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,8 +14,7 @@ import javafx.scene.input.KeyEvent;
 
 public class ShipperPaneController extends MainController {
 
-    static Shipper shipperForEdit = new Shipper("","","","","");
-    static int tableIndexForEdit;
+    static Shipper shipperForEdit = new Shipper("", "", "", "", "");
 
     @FXML
     private TableView<Shipper> shippersTableView;
@@ -52,8 +50,8 @@ public class ShipperPaneController extends MainController {
         fillTableView();
         searchTextField.setOnKeyTyped(this::searchShipper);
         addShipperButton.setOnAction(this::addShipper);
-        editShipperButton.setOnAction(this::editProduct);
-        deleteShipperButton.setOnAction(this::deleteProduct);
+        editShipperButton.setOnAction(this::editShipper);
+        deleteShipperButton.setOnAction(this::deleteShipper);
     }
 
     private void fillTableView() {
@@ -72,22 +70,23 @@ public class ShipperPaneController extends MainController {
 
     private void addShipper(ActionEvent event) {
         shippersTableView.setItems(getShippersList());
-        showPane("/fxml/product/addProductPane.fxml", "Add Product");
+        showPane("/fxml/shipper/addShipperPane.fxml", "Add Shipper");
     }
 
-    private void editProduct(ActionEvent event) {
+    private void editShipper(ActionEvent event) {
         shippersTableView.setItems(getShippersList());
         if (!shippersTableView.getSelectionModel().isEmpty()) {
-            tableIndexForEdit = shippersTableView.getSelectionModel().getSelectedIndex();
-            shipperForEdit = shippersTableView.getItems().get(tableIndexForEdit);
-            showPane("/fxml/product/editProductPane.fxml", "Edit Product");
+            setTableIndexForEdit(shippersTableView.getSelectionModel().getSelectedIndex());
+            shipperForEdit = shippersTableView.getItems().get(getTableIndexForEdit());
+            showPane("/fxml/shipper/editShipperPane.fxml", "Edit Shipper");
         }
     }
 
-    private void deleteProduct(ActionEvent event) {
+    private void deleteShipper(ActionEvent event) {
         if (!shippersTableView.getSelectionModel().isEmpty()) {
-            tableIndexForEdit = shippersTableView.getSelectionModel().getSelectedIndex();
-            showPane("/fxml/product/deleteProductPane.fxml", "Delete Product");
+            setTableIndexForEdit(shippersTableView.getSelectionModel().getSelectedIndex());
+            deleteValue = "S";
+            showPane("/fxml/delete/deletePane.fxml", "Delete Shipper");
         }
     }
 }

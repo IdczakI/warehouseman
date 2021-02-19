@@ -63,7 +63,12 @@ public class Shipper {
     public static ObservableList<Shipper> getSearchedList(ObservableList<Shipper> list, String s) {
         ObservableList<Shipper> tmpList = FXCollections.observableArrayList();
         list.stream()
-                .filter(shipper -> shipper.getId().toLowerCase().contains(s.toLowerCase()))
+                .filter(shipper -> shipper.getId().toLowerCase().contains(s.toLowerCase())
+                        || shipper.getFirstName().toLowerCase().contains(s.toLowerCase())
+                        || shipper.getLastName().toLowerCase().contains(s.toLowerCase())
+                        || shipper.getCompany().toLowerCase().contains(s.toLowerCase())
+                        || shipper.getVehicleRegistrationNumber().toLowerCase().contains(s.toLowerCase())
+                )
                 .forEach(tmpList::add);
         return tmpList;
     }

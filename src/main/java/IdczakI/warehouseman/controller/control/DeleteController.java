@@ -1,11 +1,12 @@
-package IdczakI.warehouseman.controller.product;
+package IdczakI.warehouseman.controller.control;
 
+import IdczakI.warehouseman.controller.MainController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class DeleteProductPaneController extends ProductPaneController {
+public class DeleteController extends MainController {
 
     @FXML
     private Button yesButton;
@@ -13,13 +14,16 @@ public class DeleteProductPaneController extends ProductPaneController {
     @FXML
     private Button noButton;
 
-    public void initialize(){
+    public void initialize() {
         yesButton.setOnAction(this::deleteProduct);
         noButton.setOnAction(event -> closeWindow());
     }
 
     private void deleteProduct(ActionEvent event) {
-        getProductsList().remove(getTableIndexForEdit());
+        if (deleteValue.equals("S"))
+            getShippersList().remove(getTableIndexForEdit());
+        else if (deleteValue.equals("P"))
+            getProductsList().remove(getTableIndexForEdit());
         closeWindow();
     }
 

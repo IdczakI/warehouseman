@@ -18,6 +18,8 @@ public class MainController {
 
     static private final ObservableList<Product> PRODUCTS_LIST = FXCollections.observableArrayList();
     static private final ObservableList<Shipper> SHIPPERS_LIST = FXCollections.observableArrayList();
+    private static int tableIndexForEdit;
+    public static String deleteValue = "";
 
     public static ObservableList<Product> getProductsList() {
         return PRODUCTS_LIST;
@@ -25,6 +27,14 @@ public class MainController {
 
     public static ObservableList<Shipper> getShippersList() {
         return SHIPPERS_LIST;
+    }
+
+    public static int getTableIndexForEdit() {
+        return tableIndexForEdit;
+    }
+
+    public static void setTableIndexForEdit(int tableIndexForEdit) {
+        MainController.tableIndexForEdit = tableIndexForEdit;
     }
 
     public IOFile reader = new Reader();
@@ -44,5 +54,5 @@ public class MainController {
     }
 
     public void initialize() {
-            }
+    }
 }

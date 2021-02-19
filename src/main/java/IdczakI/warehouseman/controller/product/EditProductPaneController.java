@@ -27,8 +27,10 @@ public class EditProductPaneController extends ProductPaneController {
     }
 
     private void editProduct(ActionEvent event) {
-        getProductsList().set(tableIndexForEdit, new Product(idTextField.getText(), descriptionTextField.getText(),
-                Product.getIntFromTextField(qtyTextField)));
+        Product product = new Product(productForEdit.getId(), descriptionTextField.getText(),
+                Product.getIntFromTextField(qtyTextField));
+        getProductsList().set(getTableIndexForEdit(), product);
+//        if (!getProductsList().contains(product))
         Stage stage = (Stage) editProductButton.getScene().getWindow();
         stage.close();
     }
