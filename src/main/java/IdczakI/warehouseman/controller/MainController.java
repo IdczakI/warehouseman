@@ -1,8 +1,8 @@
 package IdczakI.warehouseman.controller;
 
 import IdczakI.warehouseman.io.IOFile;
-import IdczakI.warehouseman.io.Reader;
 import IdczakI.warehouseman.io.Writer;
+import IdczakI.warehouseman.model.Inventory;
 import IdczakI.warehouseman.model.Product;
 import IdczakI.warehouseman.model.Shipper;
 import IdczakI.warehouseman.model.Warehouseman;
@@ -17,11 +17,13 @@ import java.io.IOException;
 
 public class MainController {
 
-    static public final ObservableList<Product> PRODUCTS_LIST = FXCollections.observableArrayList();
-    static public final ObservableList<Shipper> SHIPPERS_LIST = FXCollections.observableArrayList();
-    static public final ObservableList<Warehouseman> WAREHOUSEMAN_LIST = FXCollections.observableArrayList();
+    public static final ObservableList<Product> PRODUCTS_LIST = FXCollections.observableArrayList();
+    public static final ObservableList<Shipper> SHIPPERS_LIST = FXCollections.observableArrayList();
+    public static final ObservableList<Warehouseman> WAREHOUSEMAN_LIST = FXCollections.observableArrayList();
+    public static final ObservableList<Inventory> INVENTORY_LIST = FXCollections.observableArrayList();
     public static int tableIndexForEdit;
     public static String deleteValue = "";
+    public static Warehouseman loginWarehouseman;
 
     public IOFile writer = new Writer();
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="550.0"
+            xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="IdczakI.warehouseman.controller.warehouseman.WarehousemanPaneController">
+    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="237.0" layoutY="146.0" prefWidth="75.0"
+           text="Switch user"/>
+    <Button fx:id="logOutButton" alignment="CENTER" contentDisplay="CENTER" layoutX="237.0" layoutY="164.0"
+            mnemonicParsing="false" prefWidth="75.0" text="Log out"/>
+    <TextArea fx:id="userInfoTextArea" editable="false" prefHeight="140.0" prefWidth="550.0"
+              text="User Info:&#10;ID: 000X&#10;First Name: Jan&#10;Last Name: Kowalski" wrapText="true"/>
+</AnchorPane>

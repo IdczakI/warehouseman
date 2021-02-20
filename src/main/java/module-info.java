@@ -9,5 +9,7 @@ module warehouseman {
     opens IdczakI.warehouseman.controller.product to javafx.fxml;
     opens IdczakI.warehouseman.controller.shipper to javafx.fxml;
     opens IdczakI.warehouseman.controller.control to javafx.fxml;
+    opens IdczakI.warehouseman.controller.warehouseman to javafx.fxml;
+    opens IdczakI.warehouseman.controller.inventory to javafx.fxml;
     opens IdczakI.warehouseman.model to javafx.base;
 }

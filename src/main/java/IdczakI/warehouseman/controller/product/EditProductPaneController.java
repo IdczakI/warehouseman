@@ -1,5 +1,6 @@
 package IdczakI.warehouseman.controller.product;
 
+import IdczakI.warehouseman.model.Model;
 import IdczakI.warehouseman.model.Product;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,6 +9,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class EditProductPaneController extends ProductPaneController {
+
+    Model model = new Model();
 
     @FXML
     private TextField idTextField;
@@ -28,7 +31,7 @@ public class EditProductPaneController extends ProductPaneController {
 
     private void editProduct(ActionEvent event) {
         Product product = new Product(productForEdit.getId(), descriptionTextField.getText(),
-                Product.getIntFromTextField(qtyTextField));
+                model.getIntFromTextField(qtyTextField));
         PRODUCTS_LIST.set(tableIndexForEdit, product);
 //        if (!getProductsList().contains(product))
         Stage stage = (Stage) editProductButton.getScene().getWindow();

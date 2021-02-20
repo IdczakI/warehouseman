@@ -58,15 +58,17 @@ public class Product {
         return tmpList;
     }
 
-    public static int getIntFromTextField(TextField textField) {
-        boolean tmp = true;
-        char[] chars = textField.getText().toCharArray();
-        for (char c : chars) {
-            if (!Character.isDigit(c)) {
-                tmp = false;
-                break;
-            }
-        }
-        return tmp ? Integer.parseInt(textField.getText()) : 0;
-    }
+//    public static int getIntFromTextField(TextField textField) {
+//        boolean tmp = true;
+//        if (textField.getText().isEmpty())
+//            return 0;
+//        char[] chars = textField.getText().toCharArray();
+//        for (char c : chars) {
+//            if (!Character.isDigit(c)) {
+//                tmp = false;
+//                break;
+//            }
+//        }
+//        return tmp ? Integer.parseInt(textField.getText()) : 0;
+//    }
 }

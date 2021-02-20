@@ -12,7 +12,7 @@ public class Reader extends IOFile {
 
     private final static String REGEX = ",,";
 
-     public void readFiles() {
+    public void readFiles() {
         try (BufferedReader productReader = new BufferedReader(new FileReader(productsFile));
              BufferedReader inventoryReader = new BufferedReader(new FileReader(inventoryFile));
              BufferedReader warehousemanReader = new BufferedReader(new FileReader(warehousemanFile));
@@ -34,14 +34,14 @@ public class Reader extends IOFile {
 
     private void fillProductMap(String s) {
         String[] c = s.split(REGEX);
-        PRODUCT_MAP.put(c[0], new Product(c[0],c[1], Integer.parseInt(c[2])));
+        PRODUCT_MAP.put(c[0], new Product(c[0], c[1], Integer.parseInt(c[2])));
 
     }
 
     private void fillInventoryMap(String s) {
         String[] c = s.split(REGEX);
         if (PRODUCT_MAP.containsKey(c[0])) {
-            INVENTORY_MAP.put(c[0], new Inventory(PRODUCT_MAP.get(c[0]),Integer.parseInt(c[1])));
+            INVENTORY_MAP.put(c[0], new Inventory(PRODUCT_MAP.get(c[0]), Integer.parseInt(c[1])));
         } else System.out.println("file error");
     }
 
@@ -64,12 +64,12 @@ public class Reader extends IOFile {
             LocalTime localTime = LocalTime.parse(c[3], TIME_FORMATTER);
             GOODS_RECEIVED_SET.add(new GoodsReceivedNote(product, Integer.parseInt(c[1]),
                     localDate, localTime, warehouseman));
-        }else System.out.println("file error");
+        } else System.out.println("file error");
     }
 
     private void fillGoodsReleaseSet(String s) {
         String[] c = s.split(REGEX);
-        if (PRODUCT_MAP.containsKey(c[0]) && WAREHOUSEMAN_MAP.containsKey(c[4]) && SHIPPER_MAP.containsKey(c[5])){
+        if (PRODUCT_MAP.containsKey(c[0]) && WAREHOUSEMAN_MAP.containsKey(c[4]) && SHIPPER_MAP.containsKey(c[5])) {
             Product product = PRODUCT_MAP.get(c[0]);
             Warehouseman warehouseman = WAREHOUSEMAN_MAP.get(c[4]);
             LocalDate localDate = LocalDate.parse(c[2], DATE_FORMATTER);
@@ -77,7 +77,7 @@ public class Reader extends IOFile {
             Shipper shipper = SHIPPER_MAP.get(c[5]);
             GOODS_RELEASE_SET.add(new GoodsReleaseNote(product, Integer.parseInt(c[1]), localDate,
                     localTime, warehouseman, shipper));
-        }else System.out.println("file error");
+        } else System.out.println("file error");
     }
 
     @Override

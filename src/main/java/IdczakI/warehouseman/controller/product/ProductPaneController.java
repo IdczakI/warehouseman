@@ -3,6 +3,8 @@ package IdczakI.warehouseman.controller.product;
 import IdczakI.warehouseman.controller.MainController;
 import IdczakI.warehouseman.io.IOFile;
 import IdczakI.warehouseman.model.Product;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -15,6 +17,7 @@ import javafx.scene.input.KeyEvent;
 public class ProductPaneController extends MainController {
 
     static Product productForEdit = new Product("", "", 0);
+
 
     @FXML
     private TableView<Product> productsTableView;
@@ -40,6 +43,8 @@ public class ProductPaneController extends MainController {
     @FXML
     private Button deleteProductButton;
 
+//    ObservableList<Product> products = FXCollections.observableArrayList();
+
     public void initialize() {
         fillTableView();
         searchTextField.setOnKeyTyped(this::searchProduct);
@@ -49,12 +54,13 @@ public class ProductPaneController extends MainController {
     }
 
     private void fillTableView() {
+//        PRODUCTS_LIST.clear();
         PRODUCTS_LIST.addAll(IOFile.PRODUCT_MAP.values());
+//        products.addAll(PRODUCTS_LIST);
         idTableColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         descriptionTableColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
         qtyTableColumn.setCellValueFactory(new PropertyValueFactory<>("quantityPerOnePallet"));
         productsTableView.setItems(PRODUCTS_LIST);
-        System.out.println(WAREHOUSEMAN_LIST);
     }
 
     private void searchProduct(KeyEvent event) {
@@ -78,7 +84,7 @@ public class ProductPaneController extends MainController {
     private void deleteProduct(ActionEvent event) {
         if (!productsTableView.getSelectionModel().isEmpty()) {
             tableIndexForEdit = productsTableView.getSelectionModel().getSelectedIndex();
-            deleteValue ="P";
+            deleteValue = "P";
             showPane("/fxml/control/deletePane.fxml", "Delete Product");
         }
     }
