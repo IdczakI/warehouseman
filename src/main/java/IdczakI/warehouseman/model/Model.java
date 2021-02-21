@@ -20,12 +20,12 @@ public class Model {
     }
 
     private int getProductQty(Inventory inventory) {
-        return inventory.getProduct().getQuantityPerOnePallet() / inventory.getQuantityOfPallets();
+        return  inventory.getQuantityOfPallets() * inventory.getProduct().getQuantityPerOnePallet();
     }
 
     public int getIntFromTextField(TextField textField) {
         boolean tmp = true;
-        if (textField.getText().isEmpty())
+        if (textField.getText().isEmpty() || textField.getText().length() > 6)
             return 0;
         char[] chars = textField.getText().toCharArray();
         for (char c : chars) {

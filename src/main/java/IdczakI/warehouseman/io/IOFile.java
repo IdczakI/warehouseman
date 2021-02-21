@@ -5,10 +5,7 @@ import IdczakI.warehouseman.model.*;
 import java.io.File;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 abstract public class IOFile {
 
@@ -31,8 +28,8 @@ abstract public class IOFile {
     public static final Map<String, Shipper> SHIPPER_MAP = new HashMap<>();
     public static final Map<String, Inventory> INVENTORY_MAP = new HashMap<>();
 
-    public static final Set<GoodsReceivedNote> GOODS_RECEIVED_SET = new HashSet<>();
-    public static final Set<GoodsReleaseNote> GOODS_RELEASE_SET = new HashSet<>();
+    public static final List<ReceivedNote> RECEIVED_LIST = new ArrayList<>();
+    public static final List<ReleaseNote> RELEASE_LIST = new ArrayList<>();
 
     public static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy/MM/dd");
     public static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm:ss");

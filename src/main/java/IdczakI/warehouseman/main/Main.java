@@ -1,6 +1,7 @@
 package IdczakI.warehouseman.main;
 
 import IdczakI.warehouseman.io.Reader;
+import IdczakI.warehouseman.io.Writer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -23,5 +24,10 @@ public class Main extends Application {
         primaryStage.setTitle("Warehouseman Login");
         primaryStage.show();
 
+    }
+    @Override
+    public void stop(){
+        Writer writer = new Writer();
+        writer.writeFiles();
     }
 }

@@ -2,7 +2,6 @@ package IdczakI.warehouseman.model;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.TextField;
 
 import java.util.Objects;
 
@@ -34,7 +33,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return id + REGEX + description + REGEX + quantityPerOnePallet;
+        return id;
     }
 
     @Override
@@ -56,6 +55,10 @@ public class Product {
                 .filter(product -> product.getId().toLowerCase().contains(s.toLowerCase()))
                 .forEach(tmpList::add);
         return tmpList;
+    }
+
+    public String toCsv() {
+        return id + REGEX + description + REGEX + quantityPerOnePallet;
     }
 
 //    public static int getIntFromTextField(TextField textField) {

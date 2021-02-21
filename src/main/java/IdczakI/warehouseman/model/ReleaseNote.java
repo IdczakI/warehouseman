@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Objects;
 
-public class GoodsReleaseNote {
+public class ReleaseNote {
 
     private Product product;
     private int quantityOfPallets;
@@ -15,8 +15,8 @@ public class GoodsReleaseNote {
     private Warehouseman warehouseman;
     private Shipper shipper;
 
-    public GoodsReleaseNote(Product product, int quantityOfPallets, LocalDate date, LocalTime time,
-                            Warehouseman warehouseman, Shipper shipper) {
+    public ReleaseNote(Product product, int quantityOfPallets, LocalDate date, LocalTime time,
+                       Warehouseman warehouseman, Shipper shipper) {
         this.product = product;
         this.quantityOfPallets = quantityOfPallets;
         this.date = date;
@@ -59,8 +59,8 @@ public class GoodsReleaseNote {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof GoodsReleaseNote)) return false;
-        GoodsReleaseNote that = (GoodsReleaseNote) o;
+        if (!(o instanceof ReleaseNote)) return false;
+        ReleaseNote that = (ReleaseNote) o;
         return Objects.equals(product, that.product);
     }
 

@@ -57,14 +57,7 @@ public class Reader extends IOFile {
 
     private void fillGoodsReceivedSet(String s) {
         String[] c = s.split(REGEX);
-        if (WAREHOUSEMAN_MAP.containsKey(c[4]) && PRODUCT_MAP.containsKey(c[0])) {
-            Product product = PRODUCT_MAP.get(c[0]);
-            Warehouseman warehouseman = WAREHOUSEMAN_MAP.get(c[4]);
-            LocalDate localDate = LocalDate.parse(c[2], DATE_FORMATTER);
-            LocalTime localTime = LocalTime.parse(c[3], TIME_FORMATTER);
-            GOODS_RECEIVED_SET.add(new GoodsReceivedNote(product, Integer.parseInt(c[1]),
-                    localDate, localTime, warehouseman));
-        } else System.out.println("file error");
+        RECEIVED_LIST.add(new ReceivedNote(c[0], c[1], c[2], c[3], c[4], c[5], c[6], c[7], c[8]));
     }
 
     private void fillGoodsReleaseSet(String s) {
@@ -75,7 +68,7 @@ public class Reader extends IOFile {
             LocalDate localDate = LocalDate.parse(c[2], DATE_FORMATTER);
             LocalTime localTime = LocalTime.parse(c[3], TIME_FORMATTER);
             Shipper shipper = SHIPPER_MAP.get(c[5]);
-            GOODS_RELEASE_SET.add(new GoodsReleaseNote(product, Integer.parseInt(c[1]), localDate,
+            RELEASE_LIST.add(new ReleaseNote(product, Integer.parseInt(c[1]), localDate,
                     localTime, warehouseman, shipper));
         } else System.out.println("file error");
     }

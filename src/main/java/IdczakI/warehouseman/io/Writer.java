@@ -9,38 +9,38 @@ import java.io.IOException;
 public class Writer extends IOFile {
 
 
-     public void writeFiles() {
-        try (BufferedWriter productWriter = new BufferedWriter(new FileWriter(productsFile));
-             BufferedWriter stockWriter = new BufferedWriter(new FileWriter(inventoryFile));
-             BufferedWriter warehousemanWriter = new BufferedWriter(new FileWriter(warehousemanFile));
-             BufferedWriter truckDriverWriter = new BufferedWriter(new FileWriter(shipperFile));
+    public void writeFiles() {
+        try (BufferedWriter productWriter = new BufferedWriter(new FileWriter(productsFile,true));
+             BufferedWriter stockWriter = new BufferedWriter(new FileWriter(inventoryFile,true));
+             BufferedWriter warehousemanWriter = new BufferedWriter(new FileWriter(warehousemanFile,true));
+             BufferedWriter truckDriverWriter = new BufferedWriter(new FileWriter(shipperFile,true));
              BufferedWriter goodsReceivedWriter = new BufferedWriter(new FileWriter(goodsReceivedFile));
              BufferedWriter goodsReleaseWriter = new BufferedWriter(new FileWriter(goodsReleaseFile))
         ) {
             createFile();
-            for (Product product : PRODUCT_MAP.values()) {
-                if (product.toString().contains(",,"))
-                productWriter.write(product.toString());
-                productWriter.newLine();
-            }
-            for (Inventory inventory : INVENTORY_MAP.values()) {
-                stockWriter.write(inventory.toString());
-                stockWriter.newLine();
-            }
-            for (Warehouseman warehouseman : WAREHOUSEMAN_MAP.values()) {
-                warehousemanWriter.write(warehouseman.toCsv());
-                warehousemanWriter.newLine();
-            }
-            for (Shipper shipper : SHIPPER_MAP.values()) {
-                truckDriverWriter.write(shipper.toString());
-                truckDriverWriter.newLine();
-            }
-            for (GoodsReceivedNote goodsReceivedNote : GOODS_RECEIVED_SET) {
-                goodsReceivedWriter.write(goodsReceivedNote.toString());
+//            for (Product product : PRODUCT_MAP.values()) {
+//                if (product.toString().contains(",,"))
+//                    productWriter.write(product.toCsv());
+//                productWriter.newLine();
+//            }
+//            for (Inventory inventory : INVENTORY_MAP.values()) {
+//                stockWriter.write(inventory.toString());
+//                stockWriter.newLine();
+//            }
+//            for (Warehouseman warehouseman : WAREHOUSEMAN_MAP.values()) {
+//                warehousemanWriter.write(warehouseman.toCsv());
+//                warehousemanWriter.newLine();
+//            }
+//            for (Shipper shipper : SHIPPER_MAP.values()) {
+//                truckDriverWriter.write(shipper.toString());
+//                truckDriverWriter.newLine();
+//            }
+            for (ReceivedNote receivedNote : RECEIVED_LIST) {
+                goodsReceivedWriter.write(receivedNote.toString());
                 goodsReceivedWriter.newLine();
             }
-            for (GoodsReleaseNote goodsReleaseNote : GOODS_RELEASE_SET) {
-                goodsReleaseWriter.write(goodsReleaseNote.toString());
+            for (ReleaseNote releaseNote : RELEASE_LIST) {
+                goodsReleaseWriter.write(releaseNote.toString());
                 goodsReleaseWriter.newLine();
             }
         } catch (IOException | NullPointerException e) {
@@ -49,5 +49,6 @@ public class Writer extends IOFile {
     }
 
     @Override
-    public void readFiles() {}
+    public void readFiles() {
+    }
 }

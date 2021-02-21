@@ -5,20 +5,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
-    <TabPane layoutX="10.0" layoutY="10.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <TabPane layoutX="10.0" layoutY="10.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0"
+             AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <Tab text="Products">
-            <fx:include fx:id="productPane" source="product/productPane.fxml" />
+            <fx:include fx:id="productPane" source="product/productPane.fxml"/>
         </Tab>
         <Tab text="Inventory">
             <fx:include source="inventory/inventoryPane.fxml"/>
         </Tab>
         <Tab text="Shippers">
-            <fx:include fx:id="shipperPane" source="shipper/shipperPane.fxml" />
+            <fx:include fx:id="shipperPane" source="shipper/shipperPane.fxml"/>
         </Tab>
-        <Tab text="Goods received Note" />
-        <Tab text="Goods release note" />
+        <Tab text="Products receive">
+            <fx:include fx:id="receiveNotePane" source="receive/receivedNotePane.fxml"/>
+        </Tab>
+        <Tab text="Products release"/>
         <Tab text="Warehouseman">
-            <fx:include source="warehouseman/warehousemanPane.fxml" />
+            <fx:include fx:id="warehousemanPane" source="warehouseman/warehousemanPane.fxml"/>
         </Tab>
     </TabPane>
 </AnchorPane>

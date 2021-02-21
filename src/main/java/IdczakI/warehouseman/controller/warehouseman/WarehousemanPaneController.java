@@ -34,8 +34,8 @@ public class WarehousemanPaneController extends MainController {
         IOFile.WAREHOUSEMAN_MAP.clear();
         IOFile.SHIPPER_MAP.clear();
         IOFile.INVENTORY_MAP.clear();
-        IOFile.GOODS_RELEASE_SET.clear();
-        IOFile.GOODS_RECEIVED_SET.clear();
+//        IOFile.GOODS_RELEASE_SET.clear();
+//        IOFile.GOODS_RECEIVED_SET.clear();
         showPane("/fxml/control/userLoginPane.fxml", "Warehouseman login");
     }
 }

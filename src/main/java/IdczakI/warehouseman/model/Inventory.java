@@ -5,12 +5,10 @@ import java.util.Objects;
 public class Inventory {
     private Product product;
     private int quantityOfPallets;
-    private int quantityOfProducts;
 
     public Inventory(Product product, int quantityOfPallets) {
         this.product = product;
         this.quantityOfPallets = quantityOfPallets;
-        this.quantityOfProducts = quantityOfPallets / product.getQuantityPerOnePallet();
     }
 
     public Product getProduct() {
