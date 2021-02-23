@@ -43,7 +43,11 @@ public class Shipper {
 
     @Override
     public String toString() {
-        return id + Product.REGEX + firstName + Product.REGEX + lastName + Product.REGEX
+        return id + ": " + firstName + " " + lastName;
+    }
+
+    public String toCsv(){
+       return id + Product.REGEX + firstName + Product.REGEX + lastName + Product.REGEX
                 + company + Product.REGEX + vehicleRegistrationNumber;
     }
 

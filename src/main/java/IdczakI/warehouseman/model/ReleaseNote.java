@@ -1,71 +1,120 @@
 package IdczakI.warehouseman.model;
 
-import IdczakI.warehouseman.io.IOFile;
-
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.Objects;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class ReleaseNote {
 
-    private Product product;
-    private int quantityOfPallets;
-    private LocalDate date;
-    private LocalTime time;
-    private Warehouseman warehouseman;
-    private Shipper shipper;
+    private String productId;
+    private String productDescription;
+    private String palletsQuantity;
+    private String productsQuantity;
+    private String date;
+    private String time;
+    private String warehousemanId;
+    private String warehousemanFirstName;
+    private String warehousemanLastName;
+    private String shipperId;
+    private String shipperFirstName;
+    private String shipperLastName;
+    private String shipperCompany;
+    private String vehicleRegistrationNumber;
 
-    public ReleaseNote(Product product, int quantityOfPallets, LocalDate date, LocalTime time,
-                       Warehouseman warehouseman, Shipper shipper) {
-        this.product = product;
-        this.quantityOfPallets = quantityOfPallets;
+    public ReleaseNote(String productId, String productDescription, String palletsQuantity, String productsQuantity,
+                       String date, String time, String warehousemanId, String warehousemanFirstName,
+                       String warehousemanLastName, String shipperId, String shipperFirstName, String shipperLastName,
+                       String shipperCompany, String vehicleRegistrationNumber) {
+        this.productId = productId;
+        this.productDescription = productDescription;
+        this.palletsQuantity = palletsQuantity;
+        this.productsQuantity = productsQuantity;
         this.date = date;
         this.time = time;
-        this.warehouseman = warehouseman;
-        this.shipper = shipper;
+        this.warehousemanId = warehousemanId;
+        this.warehousemanFirstName = warehousemanFirstName;
+        this.warehousemanLastName = warehousemanLastName;
+        this.shipperId = shipperId;
+        this.shipperFirstName = shipperFirstName;
+        this.shipperLastName = shipperLastName;
+        this.shipperCompany = shipperCompany;
+        this.vehicleRegistrationNumber = vehicleRegistrationNumber;
+
+
     }
 
-    public Product getProduct() {
-        return product;
+    public String getProductId() {
+        return productId;
     }
 
-    public LocalDate getDate() {
+    public String getProductDescription() {
+        return productDescription;
+    }
+
+    public String getPalletsQuantity() {
+        return palletsQuantity;
+    }
+
+    public String getProductsQuantity() {
+        return productsQuantity;
+    }
+
+    public String getDate() {
         return date;
     }
 
-    public LocalTime getTime() {
+    public String getTime() {
         return time;
     }
 
-    public Warehouseman getWarehouseman() {
-        return warehouseman;
+    public String getWarehousemanId() {
+        return warehousemanId;
     }
 
-    public Shipper getTruckDriver() {
-        return shipper;
+    public String getWarehousemanFirstName() {
+        return warehousemanFirstName;
     }
 
-    public int getQuantityOfPallets() {
-        return quantityOfPallets;
+    public String getWarehousemanLastName() {
+        return warehousemanLastName;
+    }
+
+    public String getShipperId() {
+        return shipperId;
+    }
+
+    public String getShipperFirstName() {
+        return shipperFirstName;
+    }
+
+    public String getShipperLastName() {
+        return shipperLastName;
+    }
+
+    public String getShipperCompany() {
+        return shipperCompany;
+    }
+
+    public String getVehicleRegistrationNumber() {
+        return vehicleRegistrationNumber;
     }
 
     @Override
     public String toString() {
-        return product.getId() + Product.REGEX + quantityOfPallets +  Product.REGEX + date.format(IOFile.DATE_FORMATTER)
-                + Product.REGEX + time.format(IOFile.TIME_FORMATTER) + Product.REGEX + warehouseman.getId()
-                + Product.REGEX + shipper.getId();
+        return productId + Product.REGEX + productDescription + Product.REGEX + palletsQuantity + Product.REGEX
+                + productsQuantity + Product.REGEX + date + Product.REGEX + time + Product.REGEX + warehousemanId
+                + Product.REGEX + warehousemanFirstName + Product.REGEX + warehousemanLastName + Product.REGEX
+                + shipperId + Product.REGEX + shipperFirstName + Product.REGEX  + shipperLastName + Product.REGEX
+                + shipperCompany + Product.REGEX + vehicleRegistrationNumber;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof ReleaseNote)) return false;
-        ReleaseNote that = (ReleaseNote) o;
-        return Objects.equals(product, that.product);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(product);
+    public static ObservableList<ReleaseNote> getSearchedList(ObservableList<ReleaseNote> list, String s) {
+        ObservableList<ReleaseNote> tmpList = FXCollections.observableArrayList();
+        list.stream()
+                .filter(r -> r.getDate().contains(s) || r.getProductId().toLowerCase().contains(s.toLowerCase())
+                        || r.getWarehousemanId().toLowerCase().contains(s.toLowerCase())
+                        || r.getShipperId().toLowerCase().contains(s.toLowerCase())
+                )
+                .forEach(tmpList::add);
+        return tmpList;
     }
 }

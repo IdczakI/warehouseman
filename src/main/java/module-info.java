@@ -12,5 +12,6 @@ module warehouseman {
     opens IdczakI.warehouseman.controller.warehouseman to javafx.fxml;
     opens IdczakI.warehouseman.controller.inventory to javafx.fxml;
     opens IdczakI.warehouseman.controller.receive to javafx.fxml;
+    opens IdczakI.warehouseman.controller.release to javafx.fxml;
     opens IdczakI.warehouseman.model to javafx.base;
 }

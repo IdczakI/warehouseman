@@ -6,20 +6,12 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="550.0"
-            xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="IdczakI.warehouseman.controller.receive.ReceivedNotePaneController">
-    <Button fx:id="confirmReceiveButton" alignment="CENTER" contentDisplay="CENTER" layoutX="125.0" layoutY="200.0"
-            mnemonicParsing="false" prefHeight="25.0" prefWidth="300.0"
-            text="Confirm the receive of products to the warehouse" AnchorPane.leftAnchor="125.0"/>
-    <ComboBox fx:id="productComboBox" layoutX="67.0" layoutY="106.0" prefWidth="200.0"
-              AnchorPane.leftAnchor="50.0"/>
-    <TextField fx:id="palletsQtyTextField" layoutX="319.0" layoutY="106.0" prefWidth="200.0"
-               AnchorPane.leftAnchor="300.0"/>
-    <Label layoutX="67.0" layoutY="89.0" text="Procuct" AnchorPane.leftAnchor="50.0"/>
-    <Label layoutX="319.0" layoutY="89.0" text="Pallets Quantity" AnchorPane.leftAnchor="300.0"/>
-    <Label layoutX="211.0" layoutY="32.0" text="New receive of Products"/>
-    <Button fx:id="viewHistoryButton" alignment="CENTER" contentDisplay="CENTER" layoutX="125.0" layoutY="270.0"
-            mnemonicParsing="false" prefHeight="25.0" prefWidth="300.0"
-            text="View the history of notes of the received products"/>
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IdczakI.warehouseman.controller.receive.ReceivedNotePaneController">
+    <Button fx:id="confirmReceiveButton" alignment="CENTER" contentDisplay="CENTER" layoutX="125.0" layoutY="200.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="300.0" text="Confirm the receive of products to the warehouse" AnchorPane.leftAnchor="125.0" />
+    <ComboBox fx:id="productComboBox" layoutX="67.0" layoutY="106.0" prefWidth="200.0" AnchorPane.leftAnchor="50.0" />
+    <TextField fx:id="palletsQtyTextField" layoutX="319.0" layoutY="106.0" prefWidth="200.0" AnchorPane.leftAnchor="300.0" />
+    <Label layoutX="67.0" layoutY="89.0" text="Procuct" AnchorPane.leftAnchor="50.0" />
+    <Label layoutX="319.0" layoutY="89.0" text="Pallets Quantity" AnchorPane.leftAnchor="300.0" />
+    <Label layoutX="211.0" layoutY="32.0" text="New receive of Products" />
+    <Button fx:id="viewHistoryButton" alignment="CENTER" contentDisplay="CENTER" layoutX="125.0" layoutY="270.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="300.0" text="View the history of notes of the received products" AnchorPane.leftAnchor="125.0" />
 </AnchorPane>

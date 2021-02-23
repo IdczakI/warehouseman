@@ -2,17 +2,16 @@ package IdczakI.warehouseman.controller.receive;
 
 import IdczakI.warehouseman.controller.MainController;
 import IdczakI.warehouseman.io.IOFile;
-import IdczakI.warehouseman.model.ReceivedNote;
 import IdczakI.warehouseman.model.Model;
 import IdczakI.warehouseman.model.Product;
+import IdczakI.warehouseman.model.ReceivedNote;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.util.List;
 
 public class ReceivedNotePaneController extends MainController {
 
@@ -31,8 +30,8 @@ public class ReceivedNotePaneController extends MainController {
     private Button viewHistoryButton;
 
     public void initialize() {
-        productComboBox.setItems(PRODUCTS_LIST);
-        productComboBox.setValue(PRODUCTS_LIST.get(0));
+        productComboBox.setItems(PRODUCT_LIST);
+        productComboBox.setValue(PRODUCT_LIST.get(0));
         confirmReceiveButton.setOnAction(this::createReceivedNote);
         viewHistoryButton.setOnAction(event ->
                 showPane("/fxml/receive/showReceivedHistoryPane.fxml", "Receive History"));
@@ -40,18 +39,10 @@ public class ReceivedNotePaneController extends MainController {
 
     private void createReceivedNote(ActionEvent event) {
         if (model.getIntFromTextField(palletsQtyTextField) > 0) {
-            String productId = productComboBox.getValue().getId();
-            String productDescription = productComboBox.getValue().getDescription();
-            String palletsQuantity = palletsQtyTextField.getText();
-            String  productsQuantity = String.valueOf
-                    (Integer.parseInt(palletsQuantity) * productComboBox.getValue().getQuantityPerOnePallet());
-            String date = LocalDate.now().format(IOFile.DATE_FORMATTER);
-            String time = LocalTime.now().format(IOFile.TIME_FORMATTER);
-            String warehousemanId = loginWarehouseman.getId();
-            String warehousemanFirstName = loginWarehouseman.getFirstName();
-            String warehousemanLastName = loginWarehouseman.getLastName();
-            IOFile.RECEIVED_LIST.add(new ReceivedNote(productId, productDescription, palletsQuantity,
-                    productsQuantity, date, time, warehousemanId, warehousemanFirstName, warehousemanLastName));
+            List<String> infoList = model.getNoteInfoList(productComboBox,palletsQtyTextField);
+            IOFile.RECEIVED_LIST.add(new ReceivedNote(infoList.get(0), infoList.get(1), infoList.get(2),
+                    infoList.get(3), infoList.get(4), infoList.get(5), infoList.get(6), infoList.get(7),
+                    infoList.get(8)));
             palletsQtyTextField.clear();
         }
     }

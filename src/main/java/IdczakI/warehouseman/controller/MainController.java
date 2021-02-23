@@ -14,18 +14,20 @@ import java.io.IOException;
 
 public class MainController {
 
-    public static final ObservableList<Product> PRODUCTS_LIST = FXCollections.observableArrayList();
-    public static final ObservableList<Shipper> SHIPPERS_LIST = FXCollections.observableArrayList();
+    public static final ObservableList<Product> PRODUCT_LIST = FXCollections.observableArrayList();
+    public static final ObservableList<Shipper> SHIPPER_LIST = FXCollections.observableArrayList();
     public static final ObservableList<Warehouseman> WAREHOUSEMAN_LIST = FXCollections.observableArrayList();
     public static final ObservableList<ReceivedNote> RECEIVED_NOTE_LIST = FXCollections.observableArrayList();
-    public static int tableIndexForEdit;
+    public static final ObservableList<ReleaseNote> RELEASE_NOTE_LIST = FXCollections.observableArrayList();
+    public static int tableIndexForAll;
     public static String deleteValue = "";
     public static Warehouseman loginWarehouseman;
-    public static Product immortalProduct;
-    public static Warehouseman immortalWarehouseman;
+    public static Product detailProduct = new Product("","",0);
+    public static Warehouseman detailWarehouseman = new Warehouseman("","","");
+    public static Shipper detailShipper = new Shipper("","","","","");
+    public static int detailValue;
 
     public IOFile writer = new Writer();
-
 
     public void showPane(String resource, String title) {
         try {

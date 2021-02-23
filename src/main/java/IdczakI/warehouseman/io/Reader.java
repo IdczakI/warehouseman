@@ -5,8 +5,6 @@ import IdczakI.warehouseman.model.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 public class Reader extends IOFile {
 
@@ -25,8 +23,8 @@ public class Reader extends IOFile {
             inventoryReader.lines().forEach(this::fillInventoryMap);
             warehousemanReader.lines().forEach(this::fillWarehousemanMap);
             truckDriverReader.lines().forEach(this::fillTruckDriverMap);
-            goodsReceivedReader.lines().forEach(this::fillGoodsReceivedSet);
-            goodsReleaseReader.lines().forEach(this::fillGoodsReleaseSet);
+            goodsReceivedReader.lines().forEach(this::fillGoodsReceivedList);
+            goodsReleaseReader.lines().forEach(this::fillGoodsReleaseList);
         } catch (IOException | NullPointerException e) {
             e.printStackTrace();
         }
@@ -55,22 +53,15 @@ public class Reader extends IOFile {
         SHIPPER_MAP.put(c[0], new Shipper(c[0], c[1], c[2], c[3], c[4]));
     }
 
-    private void fillGoodsReceivedSet(String s) {
+    private void fillGoodsReceivedList(String s) {
         String[] c = s.split(REGEX);
         RECEIVED_LIST.add(new ReceivedNote(c[0], c[1], c[2], c[3], c[4], c[5], c[6], c[7], c[8]));
     }
 
-    private void fillGoodsReleaseSet(String s) {
+    private void fillGoodsReleaseList(String s) {
         String[] c = s.split(REGEX);
-        if (PRODUCT_MAP.containsKey(c[0]) && WAREHOUSEMAN_MAP.containsKey(c[4]) && SHIPPER_MAP.containsKey(c[5])) {
-            Product product = PRODUCT_MAP.get(c[0]);
-            Warehouseman warehouseman = WAREHOUSEMAN_MAP.get(c[4]);
-            LocalDate localDate = LocalDate.parse(c[2], DATE_FORMATTER);
-            LocalTime localTime = LocalTime.parse(c[3], TIME_FORMATTER);
-            Shipper shipper = SHIPPER_MAP.get(c[5]);
-            RELEASE_LIST.add(new ReleaseNote(product, Integer.parseInt(c[1]), localDate,
-                    localTime, warehouseman, shipper));
-        } else System.out.println("file error");
+        RELEASE_LIST.add(new ReleaseNote(c[0], c[1], c[2], c[3], c[4], c[5], c[6], c[7], c[8], c[9], c[10], c[11],
+                c[12], c[13]));
     }
 
     @Override

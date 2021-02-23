@@ -32,7 +32,7 @@ public class Writer extends IOFile {
 //                warehousemanWriter.newLine();
 //            }
 //            for (Shipper shipper : SHIPPER_MAP.values()) {
-//                truckDriverWriter.write(shipper.toString());
+//                truckDriverWriter.write(shipper.toCsv());
 //                truckDriverWriter.newLine();
 //            }
             for (ReceivedNote receivedNote : RECEIVED_LIST) {

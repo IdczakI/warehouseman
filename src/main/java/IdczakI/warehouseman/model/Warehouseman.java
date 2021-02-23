@@ -19,6 +19,12 @@ public class Warehouseman {
         this.password = password;
     }
 
+    public Warehouseman(String id, String firstName, String lastName) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public String getFirstName() {
         return firstName;
     }

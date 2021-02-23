@@ -34,8 +34,8 @@ public class AddShipperPaneController extends ShipperPaneController {
     private void productButton(ActionEvent event) {
         Shipper shipper = new Shipper(idTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(),
                 companyTextField.getText(), vehicleNumberTextField.getText());
-        if (!SHIPPERS_LIST.contains(shipper))
-            SHIPPERS_LIST.add(shipper);
+        if (!SHIPPER_LIST.contains(shipper))
+            SHIPPER_LIST.add(shipper);
         Stage stage = (Stage) addShipperButton.getScene().getWindow();
         stage.close();
     }

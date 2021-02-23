@@ -3,8 +3,6 @@ package IdczakI.warehouseman.controller.product;
 import IdczakI.warehouseman.controller.MainController;
 import IdczakI.warehouseman.io.IOFile;
 import IdczakI.warehouseman.model.Product;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -43,8 +41,6 @@ public class ProductPaneController extends MainController {
     @FXML
     private Button deleteProductButton;
 
-//    ObservableList<Product> products = FXCollections.observableArrayList();
-
     public void initialize() {
         fillTableView();
         searchTextField.setOnKeyTyped(this::searchProduct);
@@ -54,36 +50,35 @@ public class ProductPaneController extends MainController {
     }
 
     private void fillTableView() {
-//        PRODUCTS_LIST.clear();
-        PRODUCTS_LIST.addAll(IOFile.PRODUCT_MAP.values());
-//        products.addAll(PRODUCTS_LIST);
+//        PRODUCT_LIST.clear();
+        PRODUCT_LIST.addAll(IOFile.PRODUCT_MAP.values());
         idTableColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         descriptionTableColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
         qtyTableColumn.setCellValueFactory(new PropertyValueFactory<>("quantityPerOnePallet"));
-        productsTableView.setItems(PRODUCTS_LIST);
+        productsTableView.setItems(PRODUCT_LIST);
     }
 
     private void searchProduct(KeyEvent event) {
-        productsTableView.setItems(Product.getSearchedList(PRODUCTS_LIST, searchTextField.getText()));
+        productsTableView.setItems(Product.getSearchedList(PRODUCT_LIST, searchTextField.getText()));
     }
 
     private void addProduct(ActionEvent event) {
-        productsTableView.setItems(PRODUCTS_LIST);
+        productsTableView.setItems(PRODUCT_LIST);
         showPane("/fxml/product/addProductPane.fxml", "Add Product");
     }
 
     private void editProduct(ActionEvent event) {
-        productsTableView.setItems(PRODUCTS_LIST);
+        productsTableView.setItems(PRODUCT_LIST);
         if (!productsTableView.getSelectionModel().isEmpty()) {
-            tableIndexForEdit = productsTableView.getSelectionModel().getSelectedIndex();
-            productForEdit = productsTableView.getItems().get(tableIndexForEdit);
+            tableIndexForAll = productsTableView.getSelectionModel().getSelectedIndex();
+            productForEdit = productsTableView.getItems().get(tableIndexForAll);
             showPane("/fxml/product/editProductPane.fxml", "Edit Product");
         }
     }
 
     private void deleteProduct(ActionEvent event) {
         if (!productsTableView.getSelectionModel().isEmpty()) {
-            tableIndexForEdit = productsTableView.getSelectionModel().getSelectedIndex();
+            tableIndexForAll = productsTableView.getSelectionModel().getSelectedIndex();
             deleteValue = "P";
             showPane("/fxml/control/deletePane.fxml", "Delete Product");
         }

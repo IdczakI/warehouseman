@@ -15,11 +15,20 @@ public class GetInfoController extends MainController {
     private Button okButton;
 
     private String getReceivedHistoryText() {
-        return  "Product ID: " + immortalProduct.getId() + "\nProduct Description: " + immortalProduct.getDescription()
-                + "\nQuantity per 1 Pallet: " + immortalProduct.getQuantityPerOnePallet();
+        if (detailValue == 1)
+            return "Product: " + detailProduct.getId() + "\n\n" + detailProduct.getDescription()
+                    + "\n\nQuantity per 1 Pallet: " + detailProduct.getQuantityPerOnePallet();
+        else if (detailValue == 2)
+            return "Warehouseman:\n" + detailWarehouseman.getFirstName() + " " + detailWarehouseman.getLastName()
+                    + "\nID: " + detailWarehouseman.getId();
+        else if (detailValue == 3)
+            return "Shipper ID:\n" + detailShipper.getId() + "\nCompany:\n" + detailShipper.getCompany()
+                    + "\nTruck Driver:\n" + detailShipper.getFirstName() + " " + detailShipper.getLastName()
+                    + "\nVehicle Number:\n" + detailShipper.getVehicleRegistrationNumber();
+        else return "No option was selected";
     }
 
-    public void initialize(){
+    public void initialize() {
         infoTextArea.setText(getReceivedHistoryText());
         okButton.setOnAction(event -> {
             Stage stage = (Stage) okButton.getScene().getWindow();

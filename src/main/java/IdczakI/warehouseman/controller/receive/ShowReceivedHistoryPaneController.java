@@ -3,9 +3,8 @@ package IdczakI.warehouseman.controller.receive;
 import IdczakI.warehouseman.io.IOFile;
 import IdczakI.warehouseman.model.Product;
 import IdczakI.warehouseman.model.ReceivedNote;
-import IdczakI.warehouseman.model.Shipper;
+import IdczakI.warehouseman.model.Warehouseman;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -46,21 +45,37 @@ public class ShowReceivedHistoryPaneController extends ReceivedNotePaneControlle
     @FXML
     private Button warehousemanDetailsButton;
 
-    public void initialize(){
+    public void initialize() {
         fillTableView();
         searchTextField.setOnKeyTyped(this::searchReceivedHistory);
-        productDetailsButton.addEventFilter(ActionEvent.ACTION, event -> {
-            if (!receiveTableView.getSelectionModel().isEmpty()) {
-                int tableIndex = receiveTableView.getSelectionModel().getSelectedIndex();
-                String id = RECEIVED_NOTE_LIST.get(tableIndex).getProductId();
-                String description = RECEIVED_NOTE_LIST.get(tableIndex).getProductDescription();
-                int productsQty = Integer.parseInt(RECEIVED_NOTE_LIST.get(tableIndex).getProductsQuantity());
-                int palletsQty = Integer.parseInt(RECEIVED_NOTE_LIST.get(tableIndex).getPalletsQuantity());
-                int productsPerOnePallet = productsQty / palletsQty;
-                immortalProduct = new Product(id, description, productsPerOnePallet);
-                showPane("/fxml/control/getInfoPane.fxml", "Product Details");
-            }
-        });
+        productDetailsButton.setOnAction(this::getProductDetails);
+        warehousemanDetailsButton.setOnAction(this::getWarehousemanDetails);
+    }
+
+    private void getWarehousemanDetails(ActionEvent event) {
+        if (!receiveTableView.getSelectionModel().isEmpty()) {
+            tableIndexForAll = receiveTableView.getSelectionModel().getSelectedIndex();
+            String id = RECEIVED_NOTE_LIST.get(tableIndexForAll).getWarehousemanId();
+            String firstName = RECEIVED_NOTE_LIST.get(tableIndexForAll).getWarehousemanFirstName();
+            String lastName = RECEIVED_NOTE_LIST.get(tableIndexForAll).getWarehousemanLastName();
+            detailWarehouseman = new Warehouseman(id, firstName, lastName);
+            detailValue = 2;
+            showPane("/fxml/control/getInfoPane.fxml", "Warehouseman Details");
+        }
+    }
+
+    private void getProductDetails(ActionEvent event) {
+        if (!receiveTableView.getSelectionModel().isEmpty()) {
+            tableIndexForAll = receiveTableView.getSelectionModel().getSelectedIndex();
+            String id = RECEIVED_NOTE_LIST.get(tableIndexForAll).getProductId();
+            String description = RECEIVED_NOTE_LIST.get(tableIndexForAll).getProductDescription();
+            int productsQty = Integer.parseInt(RECEIVED_NOTE_LIST.get(tableIndexForAll).getProductsQuantity());
+            int palletsQty = Integer.parseInt(RECEIVED_NOTE_LIST.get(tableIndexForAll).getPalletsQuantity());
+            int productsPerOnePallet = productsQty / palletsQty;
+            detailProduct = new Product(id, description, productsPerOnePallet);
+            detailValue = 1;
+            showPane("/fxml/control/getInfoPane.fxml", "Product Details");
+        }
     }
 
     private void fillTableView() {

@@ -1,6 +1,5 @@
 package IdczakI.warehouseman.controller.shipper;
 
-import IdczakI.warehouseman.model.Product;
 import IdczakI.warehouseman.model.Shipper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,7 +36,7 @@ public class EditShipperControlPane extends ShipperPaneController {
     private void editProduct(ActionEvent event) {
         Shipper shipper = new Shipper(shipperForEdit.getId(), firstNameTextField.getText(), lastNameTextField.getText(),
                 companyTextField.getText(), vehicleNumberTextField.getText());
-        SHIPPERS_LIST.set(tableIndexForEdit, shipper);
+        SHIPPER_LIST.set(tableIndexForAll, shipper);
         Stage stage = (Stage) editShipperButton.getScene().getWindow();
         stage.close();
     }
