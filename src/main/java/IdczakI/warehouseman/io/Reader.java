@@ -39,7 +39,7 @@ public class Reader extends IOFile {
     private void fillInventoryMap(String s) {
         String[] c = s.split(REGEX);
         if (PRODUCT_MAP.containsKey(c[0])) {
-            INVENTORY_MAP.put(c[0], new Inventory(PRODUCT_MAP.get(c[0]), Integer.parseInt(c[1])));
+            INVENTORY_MAP.put(PRODUCT_MAP.get(c[0]), Integer.valueOf(c[1]));
         } else System.out.println("file error");
     }
 

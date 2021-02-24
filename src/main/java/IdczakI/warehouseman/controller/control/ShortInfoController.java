@@ -15,7 +15,7 @@ public class ShortInfoController extends MainController {
     private Label infoLabel;
 
     public void initialize(){
-        infoLabel.setText("Wrong password");
+        infoLabel.setText(shortProblemText);
         okButton.setOnAction(event -> {
             Stage stage = (Stage) okButton.getScene().getWindow();
             stage.close();

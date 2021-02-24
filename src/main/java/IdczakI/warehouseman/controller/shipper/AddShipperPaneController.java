@@ -1,5 +1,6 @@
 package IdczakI.warehouseman.controller.shipper;
 
+import IdczakI.warehouseman.io.IOFile;
 import IdczakI.warehouseman.model.Shipper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,8 +35,10 @@ public class AddShipperPaneController extends ShipperPaneController {
     private void productButton(ActionEvent event) {
         Shipper shipper = new Shipper(idTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(),
                 companyTextField.getText(), vehicleNumberTextField.getText());
-        if (!SHIPPER_LIST.contains(shipper))
+        if (!IOFile.SHIPPER_MAP.containsKey(shipper.getId())) {
             SHIPPER_LIST.add(shipper);
+            IOFile.SHIPPER_MAP.put(shipper.getId(), shipper);
+        }
         Stage stage = (Stage) addShipperButton.getScene().getWindow();
         stage.close();
     }

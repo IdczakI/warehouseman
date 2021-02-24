@@ -1,5 +1,6 @@
 package IdczakI.warehouseman.controller.product;
 
+import IdczakI.warehouseman.io.IOFile;
 import IdczakI.warehouseman.model.Model;
 import IdczakI.warehouseman.model.Product;
 import javafx.event.ActionEvent;
@@ -33,7 +34,7 @@ public class EditProductPaneController extends ProductPaneController {
         Product product = new Product(productForEdit.getId(), descriptionTextField.getText(),
                 model.getIntFromTextField(qtyTextField));
         PRODUCT_LIST.set(tableIndexForAll, product);
-//        if (!getProductsList().contains(product))
+        IOFile.PRODUCT_MAP.merge(product.getId(), product, (product1, product2) -> product2);
         Stage stage = (Stage) editProductButton.getScene().getWindow();
         stage.close();
     }

@@ -79,8 +79,6 @@ public class ShowReceivedHistoryPaneController extends ReceivedNotePaneControlle
     }
 
     private void fillTableView() {
-        RECEIVED_NOTE_LIST.clear();
-        RECEIVED_NOTE_LIST.addAll(IOFile.RECEIVED_LIST);
         dateTableColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         timeTableColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
         productTableColumn.setCellValueFactory(new PropertyValueFactory<>("productId"));

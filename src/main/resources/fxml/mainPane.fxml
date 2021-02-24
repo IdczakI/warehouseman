@@ -10,7 +10,7 @@
             <fx:include fx:id="productPane" source="product/productPane.fxml" />
         </Tab>
         <Tab text="Inventory">
-            <fx:include source="inventory/inventoryPane.fxml" />
+            <fx:include fx:id="inventoryID" source="inventory/inventoryPane.fxml" />
         </Tab>
         <Tab text="Shippers">
             <fx:include fx:id="shipperPane" source="shipper/shipperPane.fxml" />
@@ -19,7 +19,7 @@
             <fx:include fx:id="receiveNotePane" source="receive/receivedNotePane.fxml" />
         </Tab>
         <Tab text="Products release">
-            <fx:include fx:id="releaseNotePane" source="release/releaseNotePane.fxml"/>
+            <fx:include fx:id="releaseNotePane" source="release/releaseNotePane.fxml" />
         </Tab>
         <Tab text="Warehouseman">
             <fx:include fx:id="warehousemanPane" source="warehouseman/warehousemanPane.fxml" />

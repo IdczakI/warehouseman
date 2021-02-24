@@ -4,7 +4,6 @@ import IdczakI.warehouseman.io.IOFile;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 import java.time.LocalDate;
@@ -17,19 +16,19 @@ import static IdczakI.warehouseman.controller.MainController.loginWarehouseman;
 
 public class Model {
 
-    public ObservableList<InventoryNew> createInventoryNewList(Map<String, Inventory> inventoryMap) {
-        ObservableList<InventoryNew> tmpList = FXCollections.observableArrayList();
+    public ObservableList<InventoryDetail> createInventoryNewList(Map<String, Inventory> inventoryMap) {
+        ObservableList<InventoryDetail> tmpList = FXCollections.observableArrayList();
         inventoryMap.values().stream()
-                .map(inventory -> new InventoryNew(inventory.getProduct().getId(),
+                .map(inventory -> new InventoryDetail(inventory.getProduct().getId(),
                         inventory.getProduct().getDescription(),
                         getProductQty(inventory),
-                        inventory.getQuantityOfPallets()))
+                        inventory.getPalletQty()))
                 .forEach(tmpList::add);
         return tmpList;
     }
 
     private int getProductQty(Inventory inventory) {
-        return inventory.getQuantityOfPallets() * inventory.getProduct().getQuantityPerOnePallet();
+        return inventory.getPalletQty() * inventory.getProduct().getQuantityPerOnePallet();
     }
 
     public int getIntFromTextField(TextField textField) {

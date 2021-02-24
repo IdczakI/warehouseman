@@ -102,8 +102,6 @@ public class ShowReleasedHistoryPaneController extends MainController {
     }
 
     private void fillTableView() {
-        RELEASE_NOTE_LIST.clear();
-        RELEASE_NOTE_LIST.addAll(IOFile.RELEASE_LIST);
         dateTableColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         timeTableColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
         productTableColumn.setCellValueFactory(new PropertyValueFactory<>("productId"));

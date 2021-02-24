@@ -50,8 +50,6 @@ public class ProductPaneController extends MainController {
     }
 
     private void fillTableView() {
-//        PRODUCT_LIST.clear();
-        PRODUCT_LIST.addAll(IOFile.PRODUCT_MAP.values());
         idTableColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         descriptionTableColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
         qtyTableColumn.setCellValueFactory(new PropertyValueFactory<>("quantityPerOnePallet"));

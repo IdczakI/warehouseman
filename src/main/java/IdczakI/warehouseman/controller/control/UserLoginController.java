@@ -1,7 +1,6 @@
 package IdczakI.warehouseman.controller.control;
 
 import IdczakI.warehouseman.controller.MainController;
-import IdczakI.warehouseman.io.IOFile;
 import IdczakI.warehouseman.model.Warehouseman;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -17,7 +16,6 @@ public class UserLoginController extends MainController {
     private ComboBox<Warehouseman> idComboBox;
 
     public void initialize() {
-        WAREHOUSEMAN_LIST.addAll(IOFile.WAREHOUSEMAN_MAP.values());
         idComboBox.setItems(WAREHOUSEMAN_LIST);
         idComboBox.setValue(WAREHOUSEMAN_LIST.get(0));
         warehousemanPasswordField.setOnAction(event -> {
@@ -27,6 +25,8 @@ public class UserLoginController extends MainController {
                 Stage stage = (Stage) idComboBox.getScene().getWindow();
                 stage.close();
             } else {
+                warehousemanPasswordField.clear();
+                shortProblemText = "Wrong password";
                 showPane("/fxml/control/shortInfoPane.fxml", "Wrong password");
             }
         });

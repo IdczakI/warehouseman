@@ -40,9 +40,14 @@ public class ReceivedNotePaneController extends MainController {
     private void createReceivedNote(ActionEvent event) {
         if (model.getIntFromTextField(palletsQtyTextField) > 0) {
             List<String> infoList = model.getNoteInfoList(productComboBox,palletsQtyTextField);
-            IOFile.RECEIVED_LIST.add(new ReceivedNote(infoList.get(0), infoList.get(1), infoList.get(2),
+            ReceivedNote receivedNote = new ReceivedNote(infoList.get(0), infoList.get(1), infoList.get(2),
                     infoList.get(3), infoList.get(4), infoList.get(5), infoList.get(6), infoList.get(7),
-                    infoList.get(8)));
+                    infoList.get(8));
+            IOFile.RECEIVED_LIST.add(receivedNote);
+            RECEIVED_NOTE_LIST.add(receivedNote);
+            IOFile.INVENTORY_MAP.merge(productComboBox.getValue(),
+                    Integer.valueOf(palletsQtyTextField.getText()), Integer::sum);
+            fillInventoryDetailsList();
             palletsQtyTextField.clear();
         }
     }

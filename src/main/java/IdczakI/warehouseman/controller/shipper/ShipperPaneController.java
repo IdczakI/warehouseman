@@ -55,7 +55,6 @@ public class ShipperPaneController extends MainController {
     }
 
     private void fillTableView() {
-        SHIPPER_LIST.addAll(IOFile.SHIPPER_MAP.values());
         idTableColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         firstNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         lastNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));

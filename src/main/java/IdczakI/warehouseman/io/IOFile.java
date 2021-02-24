@@ -26,7 +26,7 @@ abstract public class IOFile {
     public static final Map<String, Product> PRODUCT_MAP = new HashMap<>();
     public static final Map<String, Warehouseman> WAREHOUSEMAN_MAP = new HashMap<>();
     public static final Map<String, Shipper> SHIPPER_MAP = new HashMap<>();
-    public static final Map<String, Inventory> INVENTORY_MAP = new HashMap<>();
+    public static final Map<Product, Integer> INVENTORY_MAP = new HashMap<>();
 
     public static final List<ReceivedNote> RECEIVED_LIST = new ArrayList<>();
     public static final List<ReleaseNote> RELEASE_LIST = new ArrayList<>();

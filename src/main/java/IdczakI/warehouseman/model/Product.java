@@ -19,6 +19,10 @@ public class Product {
         this.quantityPerOnePallet = quantityPerOnePallet;
     }
 
+    public static String getREGEX() {
+        return REGEX;
+    }
+
     public String getId() {
         return id;
     }
@@ -61,17 +65,4 @@ public class Product {
         return id + REGEX + description + REGEX + quantityPerOnePallet;
     }
 
-//    public static int getIntFromTextField(TextField textField) {
-//        boolean tmp = true;
-//        if (textField.getText().isEmpty())
-//            return 0;
-//        char[] chars = textField.getText().toCharArray();
-//        for (char c : chars) {
-//            if (!Character.isDigit(c)) {
-//                tmp = false;
-//                break;
-//            }
-//        }
-//        return tmp ? Integer.parseInt(textField.getText()) : 0;
-//    }
 }

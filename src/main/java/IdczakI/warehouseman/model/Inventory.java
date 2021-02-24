@@ -4,24 +4,24 @@ import java.util.Objects;
 
 public class Inventory {
     private Product product;
-    private int quantityOfPallets;
+    private int palletQty;
 
-    public Inventory(Product product, int quantityOfPallets) {
+    public Inventory(Product product, int palletQty) {
         this.product = product;
-        this.quantityOfPallets = quantityOfPallets;
+        this.palletQty = palletQty;
     }
 
     public Product getProduct() {
         return product;
     }
 
-    public int getQuantityOfPallets() {
-        return quantityOfPallets;
+    public int getPalletQty() {
+        return palletQty;
     }
 
     @Override
     public String toString() {
-        return product.getId() + Product.REGEX + quantityOfPallets;
+        return product.getId() + Product.REGEX + palletQty;
     }
 
     @Override
