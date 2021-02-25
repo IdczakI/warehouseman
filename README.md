@@ -13,6 +13,7 @@ The main application window consists of several panes.
 ### Products Pane
 These are products that can be taken into and out
 of the warehouse.
+
 You can add a new product, edit the product and remove it.
 You can also search for products by entering the 
 appropriate phrase in the text field.
@@ -27,6 +28,7 @@ The operation of the pane is similar to that of the product pane.
 The pane concerns receiving products on pallets 
 to the warehouse. Select the product, enter the number of pallets
 of the received product and confirm with the appropriate button. 
+
 It is possible to view the history of all previous products received 
 into the warehouse.
 Details about the product, and the warehouseman (user) who received 
