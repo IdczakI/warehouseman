@@ -1,7 +1,6 @@
 package IdczakI.warehouseman.controller.shipper;
 
 import IdczakI.warehouseman.controller.MainController;
-import IdczakI.warehouseman.io.IOFile;
 import IdczakI.warehouseman.model.Shipper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

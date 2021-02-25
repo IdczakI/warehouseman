@@ -1,31 +1,17 @@
 package IdczakI.warehouseman.model;
 
 import IdczakI.warehouseman.io.IOFile;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
-import java.util.Map;
 
 import static IdczakI.warehouseman.controller.MainController.loginWarehouseman;
 
 
 public class Model {
-
-    public ObservableList<InventoryDetail> createInventoryNewList(Map<String, Inventory> inventoryMap) {
-        ObservableList<InventoryDetail> tmpList = FXCollections.observableArrayList();
-        inventoryMap.values().stream()
-                .map(inventory -> new InventoryDetail(inventory.getProduct().getId(),
-                        inventory.getProduct().getDescription(),
-                        getProductQty(inventory),
-                        inventory.getPalletQty()))
-                .forEach(tmpList::add);
-        return tmpList;
-    }
 
     private int getProductQty(Inventory inventory) {
         return inventory.getPalletQty() * inventory.getProduct().getQuantityPerOnePallet();

@@ -1,6 +1,5 @@
 package IdczakI.warehouseman.controller.receive;
 
-import IdczakI.warehouseman.io.IOFile;
 import IdczakI.warehouseman.model.Product;
 import IdczakI.warehouseman.model.ReceivedNote;
 import IdczakI.warehouseman.model.Warehouseman;

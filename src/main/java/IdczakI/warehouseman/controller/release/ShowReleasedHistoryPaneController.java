@@ -1,7 +1,6 @@
 package IdczakI.warehouseman.controller.release;
 
 import IdczakI.warehouseman.controller.MainController;
-import IdczakI.warehouseman.io.IOFile;
 import IdczakI.warehouseman.model.Product;
 import IdczakI.warehouseman.model.ReleaseNote;
 import IdczakI.warehouseman.model.Shipper;

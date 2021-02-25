@@ -31,14 +31,19 @@ public class ReceivedNotePaneController extends MainController {
 
     public void initialize() {
         productComboBox.setItems(PRODUCT_LIST);
-        productComboBox.setValue(PRODUCT_LIST.get(0));
         confirmReceiveButton.setOnAction(this::createReceivedNote);
         viewHistoryButton.setOnAction(event ->
                 showPane("/fxml/receive/showReceivedHistoryPane.fxml", "Receive History"));
     }
 
     private void createReceivedNote(ActionEvent event) {
-        if (model.getIntFromTextField(palletsQtyTextField) > 0) {
+        if (productComboBox.getValue() == null) {
+            shortProblemText = "You have to choose a product";
+            showPane("/fxml/control/shortInfoPane.fxml", "Receive problem");
+        } else if (model.getIntFromTextField(palletsQtyTextField) <= 0) {
+            shortProblemText = "Pallets quantity must be\n integer greater than 0";
+            showPane("/fxml/control/shortInfoPane.fxml", "Receive problem");
+        }else  {
             List<String> infoList = model.getNoteInfoList(productComboBox,palletsQtyTextField);
             ReceivedNote receivedNote = new ReceivedNote(infoList.get(0), infoList.get(1), infoList.get(2),
                     infoList.get(3), infoList.get(4), infoList.get(5), infoList.get(6), infoList.get(7),
